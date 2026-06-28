@@ -1,0 +1,55 @@
+==================================================
+  THREAT INTELLIGENCE REPORT // Strategy First International College
+  Source: ThreatIntel Database — operated by root0x
+==================================================
+
+Threat Name    : Strategy First International College
+First Detected : 2026
+Severity Level : Critical
+Pricing Model  : Paid
+Warning Status : ACTIVE
+Target Sector  : Education Sector
+
+-- THREAT DESCRIPTION --
+Normal Hunters operation compromising Strategy First International College (SFIC) student accounts, exposing personal information, academic records, and financial data.
+
+-- ATTACK VECTOR --
+Targeted attack exploiting vulnerabilities in student information system, potentially through phishing campaigns or credential stuffing against staff accounts.
+
+-- NOTABLE INCIDENT --
+Compromise of student accounts leading to potential identity theft and academic fraud.
+
+-- COUNTERMEASURES --
+ - Implement multi-factor authentication for all student and staff accounts
+ - Conduct regular security audits and penetration testing
+ - Provide comprehensive cybersecurity training for employees
+ - Encrypt sensitive data at rest and in transit
+
+INTELLIGENCE GATHERING PURPOSE ONLY. No malicious code included.
+
+
+==================================================
+  THREAT INTELLIGENCE REPORT // Job Net .COM.MM
+  Source: ThreatIntel Database — operated by root0x
+==================================================
+
+Threat Name    : Job Net .COM.MM
+First Detected : 2026
+Severity Level : High
+Pricing Model  : Free
+Warning Status : ACTIVE
+Target Sector  : Business
+
+-- THREAT DESCRIPTION --
+Normal Hunters operation compromising Job Net .COM.MM business data, exposing corporate information, user accounts, and business operations data.
+
+-- ATTACK VECTOR --
+Targeted attack exploiting vulnerabilities in business management systems, potentially through phishing campaigns or credential stuffing against administrative accounts.
+
+-- NOTABLE INCIDENT --
+Compromise of user accounts leaking sensitive user data and cv information.
+
+-- COUNTERMEASURES --
+ - null
+
+INTELLIGENCE GATHERING PURPOSE ONLY. No malicious code included.
