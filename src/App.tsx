@@ -367,6 +367,11 @@ export function App() {
                       '/download/Free/Job Net.COM.MM ( User Account ).zip',
                       'Job Net.COM.MM (User Account).zip'
                     );
+                  } else if (selectedFamily.id === 'sfic') {
+                    downloadZipFile(
+                      '/download/Free/SFIC Student Accounts.xlsx.zip',
+                      'SFIC Student Accounts.xlsx.zip'
+                    );
                   } else {
                     downloadText(
                       `${selectedFamily.id}_intel_root0x.txt`,

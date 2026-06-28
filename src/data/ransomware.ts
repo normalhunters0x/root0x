@@ -378,28 +378,24 @@ export const ransomwareData: RansomwareFamily[] = [
   'Normal Hunters operation compromising Strategy First International College (SFIC) student accounts, exposing personal information, academic records, and financial data.',
   mechanism:
   'Targeted attack exploiting vulnerabilities in student information system, potentially through phishing campaigns or credential stuffing against staff accounts.',
-  prevention: [
-  'Implement multi-factor authentication for all student and staff accounts',
-  'Conduct regular security audits and penetration testing',
-  'Provide comprehensive cybersecurity training for employees',
-  'Encrypt sensitive data at rest and in transit'],
+  prevention: ['Null'],
   notableAttack:
   'Compromise of student accounts leading to potential identity theft and academic fraud.',
-  pricing: 'Paid',
-  price: '$500',
+  pricing: 'Free',
+  price: '$0',
   warning: true,
   detectionTime: 50,
   dataSize: '~400++ student accounts and academic records',
-  buyerRestriction: '[1 BUYER ONLY - WE SHRED ON OUR END]',
-  saleDate: 'Jun 29, 2026',
-  saleDateTime: '2024-08-15T12:00:00-05:00',
+  buyerRestriction: 'Null',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
   status: 'Active'
 },
 {
   id: 'jobnet',
   name: 'Job Net .COM.MM',
   year: 2026,
-  severity: 'High',
+  severity: 'Critical',
   target: 'Business',
   country: 'Myanmar',
   description:
