@@ -4,47 +4,28 @@ import {
   Download,
   MessageCircle,
   Database,
+  AlertCircle,
+  AlertTriangle,
+  Timer,
   Shield,
-  AlertCircle } from 'lucide-react';
+} from 'lucide-react';
 import { ransomwareData, RansomwareFamily } from '../data/ransomware';
 import { downloadText, downloadZipFile } from '../utils/download';
-
-function severityColor(severity: string) {
-  switch (severity) {
-    case 'Critical':
-      return 'text-red-400 border-red-500/50 bg-red-500/10';
-    case 'Medium':
-      return 'text-orange-300 border-orange-500/40 bg-orange-500/10';
-    default:
-      return 'text-zinc-300 border-zinc-500/40 bg-zinc-500/10';
-  }
-}
-
-function pricingColor(pricing: string) {
-  switch (pricing) {
-    case 'Paid':
-      return 'text-green-400 border-green-500/50 bg-green-500/10';
-    case 'Free':
-      return 'text-blue-400 border-blue-500/50 bg-blue-500/10';
-    default:
-      return 'text-zinc-300 border-zinc-500/40 bg-zinc-500/10';
-  }
-}
 
 function formatCountdown(saleDateTime: string): { days: number; hours: number; seconds: number } {
   try {
     const saleDate = new Date(saleDateTime);
     const now = new Date();
     const diff = saleDate.getTime() - now.getTime();
-    
+
     if (diff <= 0) {
       return { days: 0, hours: 0, seconds: 0 };
     }
-    
+
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
+
     return { days, hours, seconds };
   } catch (error) {
     return { days: 0, hours: 0, seconds: 0 };
@@ -53,147 +34,208 @@ function formatCountdown(saleDateTime: string): { days: number; hours: number; s
 
 function useCountdown(saleDateTime: string) {
   const [countdown, setCountdown] = useState(() => formatCountdown(saleDateTime));
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(formatCountdown(saleDateTime));
     }, 1000);
     return () => clearInterval(interval);
   }, [saleDateTime]);
-  
+
   return countdown;
 }
 
-function BreachCard({ family, onCardClick, filterType }: { family: RansomwareFamily; onCardClick: (family: RansomwareFamily) => void; filterType: string }) {
-  const countdown = useCountdown(family.saleDateTime || '');
-  
+function isValidSaleDate(saleDateTime: string) {
+  if (!saleDateTime || saleDateTime === 'Null') return false;
+  return !Number.isNaN(new Date(saleDateTime).getTime());
+}
+
+function StatusBadge({ family }: { family: RansomwareFamily }) {
+  if (family.status === 'Soon') {
+    return (
+      <span className="inline-block px-2 py-1 border border-white/40 text-white text-[9px] font-bold uppercase tracking-widest animate-pulse">
+        Upcoming
+      </span>
+    );
+  }
+  if (family.pricing === 'Free') {
+    return (
+      <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
+        Leaked
+      </span>
+    );
+  }
+  return (
+    <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
+      For Sale
+    </span>
+  );
+}
+
+function Chip({ label, value }: { label: string; value: string }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-white/15 bg-white/[0.03]">
+      <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-red-500">{label}</span>
+      <span className="text-[10px] text-white/70 uppercase tracking-wider truncate max-w-[180px]">
+        {value}
+      </span>
+    </span>
+  );
+}
+
+function AuctionTimer({ saleDateTime }: { saleDateTime: string }) {
+  const { days, hours, seconds } = useCountdown(saleDateTime);
+  const cells = [
+    { label: 'Days', value: days },
+    { label: 'Hours', value: hours },
+    { label: 'Secs', value: seconds },
+  ];
+  return (
+    <div className="border border-red-900/60 bg-red-950/10 p-4 mb-5">
+      <div className="flex items-center gap-2 mb-3">
+        <Timer className="w-3.5 h-3.5 text-red-500" />
+        <p className="text-[9px] font-bold text-red-500 tracking-[0.35em] uppercase">
+          Auction timer // USA timezone
+        </p>
+      </div>
+      <div className="grid grid-cols-3 gap-2">
+        {cells.map((cell) => (
+          <div key={cell.label} className="bg-black border border-white/10 py-2.5 text-center">
+            <div className="text-xl font-bold text-red-500 glow-text">
+              {String(cell.value).padStart(2, '0')}
+            </div>
+            <div className="text-[8px] text-white/40 uppercase tracking-[0.25em] mt-1">
+              {cell.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function BreachCard({
+  family,
+  onCardClick,
+  filterType,
+}: {
+  family: RansomwareFamily;
+  onCardClick: (family: RansomwareFamily) => void;
+  filterType: string;
+}) {
+  const showTimer = isValidSaleDate(family.saleDateTime);
+  const warningActive = filterType === 'Warning' && family.warning;
+
   return (
     <article
       key={family.id}
       onClick={() => onCardClick(family)}
-      className={`group relative flex flex-col bg-gradient-to-br from-zinc-950/95 to-black/95 hover:shadow-2xl hover:shadow-red-900/30 transition-all duration-300 cursor-pointer ${filterType === 'Warning' && family.warning ? 'border-orange-500/60 hover:border-orange-400/80' : 'border-red-900/40 hover:border-red-600/60'}`}>
-      
-        {family.status === 'Soon' && (
-          <div className="absolute top-3 right-3 px-3 py-1 bg-red-600 text-black text-[10px] font-bold uppercase tracking-wider animate-pulse">
-            SOON
-          </div>
-        )}
-        
-        {filterType === 'Warning' && family.warning && (
-          <div className="absolute top-3 left-3 px-3 py-1 bg-orange-600 text-black text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 animate-pulse">
-            ⚠️ WARNING
-          </div>
-        )}
-        
-        <div className="p-6 flex-1">
-          <div className="flex items-start gap-4 mb-4">
-            <div className="p-3 border border-red-700/60 bg-red-950/30 shadow-lg shadow-red-900/20">
-              <Database className="w-6 h-6 text-red-500" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-xl font-bold text-red-500 uppercase tracking-wider mb-1 group-hover:text-red-400 transition-colors">
-                {family.name}
-              </h3>
-              <p className="text-[11px] text-zinc-500 uppercase tracking-widest">
-                {family.target}
-              </p>
-            </div>
-          </div>
-          
-          <div className="space-y-3 mb-4">
-            <div className="flex items-center gap-2 text-sm text-zinc-300 bg-black/40 px-3 py-2 border border-zinc-800">
-              <Database className="w-4 h-4 text-red-500" />
-              <span className="font-mono">{family.dataSize}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-zinc-300 bg-black/40 px-3 py-2 border border-zinc-800">
-              <Shield className="w-4 h-4 text-red-500" />
-              <span className="font-mono">{family.buyerRestriction}</span>
-            </div>
-          </div>
-          
-          <p className="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-2">
-            {family.description}
-          </p>
-          
-          <div className="border-t border-red-900/30 pt-4">
-            {family.warning && (
-              <>
-                <p className="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">COUNTDOWN TIMER (USA TIMEZONE)</p>
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-red-500 glow-text">{countdown.days}</p>
-                    <p className="text-[10px] text-zinc-500 uppercase">Days</p>
-                  </div>
-                  <p className="text-red-500 font-bold">:</p>
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-red-500 glow-text">{countdown.hours}</p>
-                    <p className="text-[10px] text-zinc-500 uppercase">Hours</p>
-                  </div>
-                  <p className="text-red-500 font-bold">:</p>
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-red-500 glow-text">{countdown.seconds}</p>
-                    <p className="text-[10px] text-zinc-500 uppercase">Secs</p>
-                  </div>
-                </div>
-                <p className="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">SALE START THE</p>
-              </>
-            )}
-            <p className="text-2xl font-bold text-red-500 uppercase tracking-wider glow-text">
-              {family.saleDate}
+      className="corner-brackets group relative flex flex-col bg-black border border-white/10 hover:border-red-600/80 transition-all duration-300 cursor-pointer">
+      <div className={`h-1 w-full ${family.warning ? 'bg-red-600' : 'bg-white/10'}`} />
+
+      <div className="flex items-center justify-between gap-2 px-4 py-2.5 bg-white/[0.04] border-b border-white/10">
+        <span className="text-[9px] text-white/40 tracking-[0.3em] uppercase truncate">
+          ID_{family.id.toUpperCase()}
+        </span>
+        <StatusBadge family={family} />
+      </div>
+
+      <div className="p-5 flex-1">
+        <div className="flex items-start justify-between gap-4 mb-5">
+          <div className="min-w-0">
+            <h3 className="text-lg font-bold text-white uppercase tracking-wide group-hover:text-red-500 transition-colors leading-tight">
+              {family.name}
+            </h3>
+            <p className="text-[10px] text-white/40 uppercase tracking-[0.3em] mt-1.5">
+              {family.target}
             </p>
           </div>
+          <div className="p-2.5 border border-red-700/50 bg-red-950/40 text-red-500 shrink-0 group-hover:bg-red-950/70 transition-colors">
+            <Database className="w-5 h-5" />
+          </div>
         </div>
-        
-        <div className="p-4 border-t border-red-900/30">
-          {family.status === 'Soon' ? (
-            <button
-              disabled
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800 text-zinc-400 border border-zinc-700 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
-              COMING SOON
-            </button>
-          ) : family.pricing === 'Free' ? (
+
+        <div className="flex flex-wrap gap-2 mb-5">
+          <Chip label="Sector" value={family.target} />
+          <Chip label="Country" value={family.country} />
+          <Chip label="Records" value={family.dataSize} />
+          {family.buyerRestriction && family.buyerRestriction !== 'Null' && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-red-900/70 bg-red-950/30">
+              <Shield className="w-3 h-3 text-red-500" />
+              <span className="text-[9px] text-red-400 uppercase tracking-wider">
+                {family.buyerRestriction}
+              </span>
+            </span>
+          )}
+        </div>
+
+        <p className="text-xs text-white/50 leading-relaxed mb-5 line-clamp-3">
+          {family.description}
+        </p>
+
+        {family.warning && showTimer && <AuctionTimer saleDateTime={family.saleDateTime} />}
+        {warningActive && (
+          <div className="flex items-center gap-2 border border-red-600/60 bg-red-950/30 px-3 py-2 mb-5">
+            <AlertTriangle className="w-3.5 h-3.5 text-red-500 shrink-0" />
+            <span className="text-[9px] text-red-400 uppercase tracking-[0.3em] font-bold">
+              Warning // forced leak window active
+            </span>
+          </div>
+        )}
+      </div>
+
+      <div className="p-4 border-t border-white/10 bg-white/[0.03]">
+        {family.status === 'Soon' ? (
+          <button
+            disabled
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
+            Transfer Pending
+          </button>
+        ) : family.pricing === 'Free' ? (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (family.id === 'jobnet') {
+                downloadZipFile(
+                  '/download/Free/Job Net.COM.MM ( User Account ).zip',
+                  'Job Net.COM.MM (User Account).zip'
+                );
+              } else if (family.id === 'sfic') {
+                downloadZipFile(
+                  '/download/Free/SFIC Student Accounts.xlsx.zip',
+                  'SFIC Student Accounts.xlsx.zip'
+                );
+              } else {
+                downloadText(
+                  `${family.id}_intel_root0x.txt`,
+                  buildReport(family)
+                );
+              }
+            }}
+            className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
+            <Download className="w-4 h-4" />
+            Download Database
+          </button>
+        ) : (
+          <>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[9px] text-white/40 uppercase tracking-[0.3em]">Starting bid</span>
+              <span className="text-lg font-bold text-red-500 glow-text">
+                {family.price || '$$$'}
+              </span>
+            </div>
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (family.id === 'jobnet') {
-                  downloadZipFile(
-                    '/download/Free/Job Net.COM.MM ( User Account ).zip',
-                    'Job Net.COM.MM (User Account).zip'
-                  );
-                } else if (family.id === 'sfic') {
-                  downloadZipFile(
-                    '/download/Free/SFIC Student Accounts.xlsx.zip',
-                    'SFIC Student Accounts.xlsx.zip'
-                  );
-                } else {
-                  downloadText(
-                    `${family.id}_intel_root0x.txt`,
-                    buildReport(family)
-                  );
-                }
               }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-black hover:bg-zinc-900 text-white border border-red-600 font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:scale-[1.02] glow-red">
-              <Download className="w-4 h-4" />
-              DOWNLOAD FREE
+              className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
+              <MessageCircle className="w-4 h-4" />
+              Contact Us On Session
             </button>
-          ) : (
-            <>
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] text-zinc-500 uppercase tracking-widest">CATEGORY: PAID</span>
-                <span className="text-lg font-bold text-red-500 glow-text">{family.price || '$$$'}</span>
-              </div>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200 hover:scale-[1.02] glow-red">
-                <MessageCircle className="w-4 h-4" />
-                CONTACT US ON SESSION
-              </button>
-            </>
-          )}
-        </div>
-      </article>
+          </>
+        )}
+      </div>
+    </article>
   );
 }
 
@@ -231,13 +273,13 @@ function buildReport(family: RansomwareFamily) {
 export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFamily) => void }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<string>('All');
-  
+
   const filteredData = useMemo(() => {
     return ransomwareData.filter((item) => {
       const matchesSearch =
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       let matchesFilter = true;
       if (filterType === 'Free') {
         matchesFilter = item.pricing === 'Free' && item.status !== 'Soon';
@@ -248,23 +290,45 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
       } else if (filterType === 'Coming Soon') {
         matchesFilter = item.status === 'Soon';
       }
-      
+
       return matchesSearch && matchesFilter;
     });
-  }, [searchQuery, filterType, ransomwareData]);
-  
+  }, [searchQuery, filterType]);
+
   const filterOptions = ['All', 'Free', 'Paid / Selling', 'Warning', 'Coming Soon'];
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+      {/* Section header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-1 bg-red-600 glow-red" />
+          <div className="flex-1">
+            <p className="text-[10px] sm:text-[11px] text-red-500 tracking-[0.45em] uppercase font-bold mb-1">
+              {'//'} exfil_database
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-wide">
+              Breach <span className="text-red-600 glow-text">Feed</span>
+            </h2>
+          </div>
+          <div className="hidden md:flex items-center gap-2 text-[10px] text-white/40 tracking-[0.3em] uppercase">
+            <span className="inline-block w-2 h-2 bg-red-600 animate-pulse" />
+            Live // {ransomwareData.length} feeds
+          </div>
+        </div>
+        <div className="mt-4 h-px bg-gradient-to-r from-red-600/80 via-white/10 to-transparent" />
+      </div>
+
+      {/* Controls */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
         <div className="relative w-full sm:max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-red-500/70" />
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="scan breaches..."
-            className="w-full bg-black/60 border border-zinc-800 focus:border-red-600 outline-none text-sm text-zinc-200 placeholder-zinc-600 pl-9 pr-3 py-3 transition-colors font-hack" />
+            className="w-full bg-black border border-white/15 focus:border-red-600 outline-none text-sm text-white placeholder-white/30 pl-9 pr-3 py-3 transition-colors font-hack"
+          />
         </div>
         <div className="flex flex-wrap gap-2">
           {filterOptions.map((option) =>
@@ -272,7 +336,7 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
               key={option}
               type="button"
               onClick={() => setFilterType(option)}
-              className={`px-4 py-2 text-xs uppercase tracking-widest border transition-all cursor-pointer ${filterType === option ? 'border-red-600 bg-red-950/50 text-red-400 glow-red' : 'border-zinc-800 text-zinc-500 hover:border-zinc-600 hover:text-zinc-300'}`}>
+              className={`clip-corner px-4 py-2 text-xs uppercase tracking-widest border transition-all cursor-pointer ${filterType === option ? 'border-red-600 bg-red-950/50 text-red-400 glow-red' : 'border-white/15 text-white/40 hover:border-red-600/60 hover:text-red-400'}`}>
                 {option}
               </button>
           )}
@@ -286,16 +350,16 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
             ))}
           </div>
       ) : (
-        <div className="text-center py-24 border border-dashed border-zinc-800 bg-black/40">
-            <AlertCircle className="w-12 h-12 text-zinc-700 mx-auto mb-4" />
-            <h3 className="text-lg font-bold text-zinc-300">
+        <div className="border border-dashed border-white/15 bg-black/60 py-24 text-center">
+            <AlertCircle className="w-12 h-12 text-red-600/60 mx-auto mb-4" />
+            <h3 className="text-lg font-bold text-white uppercase tracking-widest">
               No breaches found
             </h3>
-            <p className="text-zinc-600 mt-1 text-sm">
+            <p className="text-white/40 mt-1 text-sm">
               Adjust search parameters or filter configuration.
             </p>
           </div>
       )}
-      </section>
+    </section>
   );
 }

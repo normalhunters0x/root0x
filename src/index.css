@@ -12,7 +12,7 @@
 :root {
   --hack-red: #ff1f3d;
   --hack-red-dim: #b00020;
-  --hack-bg: #0a0a0c;
+  --hack-bg: #000;
 }
 body {
   background-color: var(--hack-bg);
@@ -83,6 +83,83 @@ body {
 }
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: #0a0a0c; }
+::-webkit-scrollbar-track { background: #000; }
 ::-webkit-scrollbar-thumb { background: #3a0a12; border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: var(--hack-red-dim); }
+/* ===== Ransomware leak-site design language ===== */
+/* Corner brackets — HUD / underground frame accent */
+.corner-brackets { position: relative; }
+.corner-brackets::before,
+.corner-brackets::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 30;
+  transition: width 0.25s ease, height 0.25s ease;
+}
+.corner-brackets::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--hack-red);
+  border-left: 2px solid var(--hack-red);
+}
+.corner-brackets::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--hack-red);
+  border-right: 2px solid var(--hack-red);
+}
+.corner-brackets:hover::before,
+.corner-brackets:hover::after {
+  width: 26px;
+  height: 26px;
+}
+/* Cut corner — brutalist clipped corner for buttons / badges */
+.clip-corner {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+/* ===== Criminal hacker / glitch effects ===== */
+/* Dense red grid backdrop for the BreachForums hero */
+.breach-grid {
+  background-image:
+    linear-gradient(rgba(255, 31, 61, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 31, 61, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* CRT static overlay */
+.crt-static {
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 31, 61, 0.4) 0 1px, transparent 1px 5px);
+}
+/* RGB glitch text-shadow for the hero title */
+.glitch-text {
+  text-shadow: 2px 0 rgba(255, 31, 61, 0.9), -2px 0 rgba(255, 255, 255, 0.7);
+}
+/* Redacted black bar */
+.redacted {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  user-select: none;
+}
+.redacted::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, #000 0 10px, rgba(255, 31, 61, 0.35) 10px 14px, #000 14px 24px);
+}
+/* ===== Red / White / Black only theme enforcement ===== */
+:focus-visible {
+  outline: 1px dashed var(--hack-red);
+  outline-offset: 2px;
+}
+::selection {
+  background: var(--hack-red);
+  color: #000;
+}
