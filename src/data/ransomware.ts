@@ -497,7 +497,7 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   warning: false,
   detectionTime: 0,
   dataSize: 'Student records with PII, academic data, and identification documents',
-  buyerRestriction: '[@suicid_ed - Session Contact]',
+  buyerRestriction: '[NEGOTIABLE - ETH/BTC/XMR ACCEPTED]',
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active'
