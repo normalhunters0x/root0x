@@ -66,8 +66,15 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
     );
   }
   return (
-    <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
-      For Sale
+    <span className="inline-flex items-center gap-1.5">
+      <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
+        For Sale
+      </span>
+      {family.isNew && (
+        <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
+          New
+        </span>
+      )}
     </span>
   );
 }
@@ -275,7 +282,7 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
   const [filterType, setFilterType] = useState<string>('All');
 
   const filteredData = useMemo(() => {
-    return ransomwareData.filter((item) => {
+    const filtered = ransomwareData.filter((item) => {
       const matchesSearch =
       item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -293,6 +300,22 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
 
       return matchesSearch && matchesFilter;
     });
+
+    if (filterType === 'All') {
+      return [...filtered].sort((a, b) => {
+        const aForSale = a.pricing === 'Paid' && a.status === 'Active';
+        const bForSale = b.pricing === 'Paid' && b.status === 'Active';
+        const aIsNew = a.isNew === true;
+        const bIsNew = b.isNew === true;
+
+        const aPriority = aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3;
+        const bPriority = bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3;
+
+        return aPriority - bPriority;
+      });
+    }
+
+    return filtered;
   }, [searchQuery, filterType]);
 
   const filterOptions = ['All', 'Free', 'Paid / Selling', 'Warning', 'Coming Soon'];

@@ -21,6 +21,7 @@ export interface RansomwareFamily {
   saleDate: string;
   saleDateTime: string;
   status: 'Active' | 'Soon';
+  isNew?: boolean;
 }
 
 export const ransomwareData: RansomwareFamily[] = [
@@ -500,7 +501,8 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   buyerRestriction: '[NEGOTIABLE - ETH/BTC/XMR ACCEPTED]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  isNew: true
 },
 {
   id: 'gusto-glms',
