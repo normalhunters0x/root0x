@@ -1,0 +1,22 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Hello World,
+
+Today, LidaBroker & DYSPHOR1A breached the University of Delhi, and we are now selling the database.
+
+The University of Delhi (DU) is a major public university in New Delhi, India, founded in 1922. It is one of India’s most well-known universities, offering undergraduate, postgraduate, and doctoral programs across subjects like science, arts, commerce, law, and technology.
+
+Comprimised: id,form_id,status,applied_on,titre,prenom,nom,name,mobile,enrolment,membership,department,course,completion,uni_email,wifi_email,other_accounts,rejection_reason,photo_file,id_front_file,id_back_file,photo_url,id_front_url,id_back_url
+
+Price is 450$ obviously negotiable.
+
+Contact @suicid_ed if you're interested
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQI+ktDt4Hbxvi+RvLP0ugwpkmq+wUCaocVaAAKCRDP0ugwpkmq
++4aQAQCi8WusZva1mWkxQnUYWj10msfvxQdJeZGkKkWrE/j4swEAkE3UDcpPhfS4
+1rve30gRsF85i9xOlhslUvC3Kp2M0Q0=
+=hsNm
+-----END PGP SIGNATURE-----

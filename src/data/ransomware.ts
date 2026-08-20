@@ -12,6 +12,7 @@ export interface RansomwareFamily {
   pricing: 'Free' | 'Paid';
   price?: string;
   accountSummary?: string;
+  exampleCompromised?: string;
   imageLinks?: string[];
   warning: boolean;
   detectionTime: number;
@@ -463,6 +464,40 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   detectionTime: 0,
   dataSize: '52,000 officer records + 4,000 facial photos',
   buyerRestriction: '[Negotiable - ETH/BTC/XMR accepted]',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active'
+},
+{
+  id: 'delhi-du',
+  name: 'The University of Delhi (DU)',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Education Sector',
+  country: '\u{1F1EE}\u{1F1F3} India',
+  description:
+  'The University of Delhi (DU) is a major public university in New Delhi, India, founded in 1922. It is one of India\'s most well-known universities, offering undergraduate, postgraduate, and doctoral programs across subjects like science, arts, commerce, law, and technology.',
+  mechanism:
+  'Compromised internal university records system exposing student PII, academic records, enrollment data, personal identification documents, and contact information.',
+  prevention: ['Null'],
+  notableAttack:
+  'LidaBroker & DYSPHOR1A breached the University of Delhi and are selling the full database of student records.',
+  pricing: 'Paid',
+  price: '$450',
+  exampleCompromised: `Comprimised Fields: id, form_id, status, applied_on, titre, prenom, nom, name, mobile, enrolment, membership, department, course, completion, uni_email, wifi_email, other_accounts, rejection_reason, photo_file, id_front_file, id_back_file, photo_url, id_front_url, id_back_url
+
+Sample Records:
+
+ID 3: Mr. Ripunjay Kumar Thakur | Dept: History | M.PHIL. HISTORY | Mobile: 9555399751 | Enrollment: RC-664/10
+ID 5: Ms. Gunjan Bansal | Dept: Operational Research | PH.D. OPERATIONAL RESEARCH | Mobile: 9953204988 | Email: gunjan.1512@gmail.com
+ID 8: Mrs. Neelam Arya | Dept: Establishment Branch-I | Mobile: 9560959242 | Email: neelamarya375@gmail.com
+ID 6: Mr. Rajan | Dept: Punjabi | M.PHIL. PUNJABI | Mobile: 9555767094 | Email: Depttofpunjabi@gmail.com
+ID 7: Mr. SHIVA SRIVASTAVA | Dept: Education | M.PHIL. EDUCATION | Mobile: 8743059593
+ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
+  warning: false,
+  detectionTime: 0,
+  dataSize: 'Student records with PII, academic data, and identification documents',
+  buyerRestriction: '[@suicid_ed - Session Contact]',
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active'
