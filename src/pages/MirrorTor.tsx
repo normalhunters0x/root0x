@@ -2,7 +2,6 @@ import { Fragment, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Activity,
-  AlertTriangle,
   Check,
   ChevronDown,
   Copy,
@@ -71,6 +70,19 @@ const MIRRORS: Mirror[] = [
   },
   {
     id: 'mirror-02',
+    name: 'BF Clearnet',
+    type: 'HTTPS',
+    url: 'https://bf.st',
+    uptime: '99.9%',
+    latency: '42ms',
+    status: 'up',
+    nodes: 'CDN edge · EU',
+    fingerprint: 'TLS · SHA-256 A3C9…55F1',
+    lastCheck: '2s ago',
+    note: 'BreachForums clearnet mirror. Primary access point.',
+  },
+  {
+    id: 'mirror-03',
     name: 'IPFS Mirror',
     type: 'IPFS',
     url: 'ipfs://QmNQ2U9…xR4m',
@@ -89,13 +101,6 @@ const CHANNELS: { label: string; detail: string; status: MirrorStatus; icon: typ
   { label: 'Clearnet CDN', detail: '1 of 1 mirror online', status: 'up', icon: Globe },
   { label: 'IPFS Gateway', detail: 'routing issue reported', status: 'down', icon: Network },
   { label: 'Onion Mail Relay', detail: 'maintenance window', status: 'down', icon: Server },
-];
-
-const STEPS = [
-  'Install Tor Browser from the official project only.',
-  'Open the primary onion address and verify the ed25519 fingerprint.',
-  'Keep JavaScript disabled and never reuse clearnet credentials.',
-  'Report unreachable mirrors through the secure contact channels.',
 ];
 
 function StatusPill({ status }: { status: MirrorStatus }) {
@@ -341,27 +346,6 @@ export function MirrorTor() {
       <SectionTitle eyebrow="live_telemetry" title="Status" accent="Table" />
       <MirrorTable />
 
-      {/* Access guide */}
-      <div className="mt-10">
-        <SectionTitle eyebrow="first_steps" title="Access" accent="Guide" />
-        <div className="grid sm:grid-cols-2 gap-4">
-          {STEPS.map((s, i) => (
-            <div key={i} className="corner-brackets flex items-start gap-4 bg-black border border-white/10 p-5">
-              <span className="text-red-500 font-bold text-lg glow-text">{String(i + 1).padStart(2, '0')}</span>
-              <p className="text-sm text-white/60 leading-relaxed">{s}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Notice */}
-      <div className="mt-8 flex items-start gap-3 border border-red-600/60 bg-red-950/30 px-5 py-4">
-        <AlertTriangle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-        <p className="text-[11px] text-red-300/80 leading-relaxed">
-          Mirrors rotate without notice. Always re-verify the TLS / ed25519 fingerprint before
-          proceeding. Never access the network from corporate or monitored infrastructure.
-        </p>
-      </div>
     </section>
   );
 }

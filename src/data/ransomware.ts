@@ -442,4 +442,76 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active'
+},
+{
+  id: 'indo-polic',
+  name: 'Indonesian Police Database',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Government / Law Enforcement',
+  country: 'Indonesia',
+  description:
+  'Database containing records of 52,000 Indonesian police officers including email addresses, phone numbers, first and last names, passwords, location details, and 4,000 facial photographs.',
+  mechanism:
+  'Compromised internal police records system exposing officer PII, credentials, biometric data, and device tokens.',
+  prevention: ['Null'],
+  notableAttack:
+  'Mass exposure of 52,000 Indonesian police officer records with facial photographs and credentials.',
+  pricing: 'Paid',
+  price: '$550 - $2,350',
+  warning: false,
+  detectionTime: 0,
+  dataSize: '52,000 officer records + 4,000 facial photos',
+  buyerRestriction: '[Negotiable - ETH/BTC/XMR accepted]',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active'
+},
+{
+  id: 'gusto-glms',
+  name: 'GUSTO College GLMS',
+  year: 2026,
+  severity: 'Medium',
+  target: 'Education Sector',
+  country: 'Thailand',
+  description:
+  'Compromised user accounts from GUSTO College\'s GLMS (Global Learning Management System). Exposed user credentials from the Moodle platform at gusto-education.com.',
+  mechanism:
+  'Exposed user accounts discovered on the GUSTO College GLMS Moodle platform. Credentials and account data leaked.',
+  prevention: ['Null'],
+  notableAttack:
+  'Leak of user accounts from GUSTO College GLMS Moodle platform.',
+  pricing: 'Free',
+  price: '$0',
+  warning: false,
+  detectionTime: 0,
+  dataSize: 'User account credentials',
+  buyerRestriction: 'Null',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active'
+},
+{
+  id: 'ayudhya',
+  name: 'AYUDHYA TH Insurance',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Financial / Insurance',
+  country: 'Thailand',
+  description:
+  'Leaked data from AYUDHYA (TH Insurance / Allianz Thailand). Internal batch-control system used within the financial/transaction batch-processing ecosystem behind the Allianz customer-facing web platform. Includes admin credentials (TBH2CASH:AAbb1234).',
+  mechanism:
+  'Compromised internal batch-control system for insurance transaction processing. Root endpoints at Allianz Thailand health provider portal exposed.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full leak of AYUDHYA TH Insurance internal systems including Allianz Thailand health provider portal access.',
+  pricing: 'Free',
+  price: '$0',
+  warning: false,
+  detectionTime: 0,
+  dataSize: 'Internal batch-control system + admin credentials',
+  buyerRestriction: 'Null',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active'
 }];

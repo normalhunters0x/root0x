@@ -299,25 +299,7 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-      {/* Section header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-1 bg-red-600 glow-red" />
-          <div className="flex-1">
-            <p className="text-[10px] sm:text-[11px] text-red-500 tracking-[0.45em] uppercase font-bold mb-1">
-              {'//'} exfil_database
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-wide">
-              Breach <span className="text-red-600 glow-text">Feed</span>
-            </h2>
-          </div>
-          <div className="hidden md:flex items-center gap-2 text-[10px] text-white/40 tracking-[0.3em] uppercase">
-            <span className="inline-block w-2 h-2 bg-red-600 animate-pulse" />
-            Live // {ransomwareData.length} feeds
-          </div>
-        </div>
-        <div className="mt-4 h-px bg-gradient-to-r from-red-600/80 via-white/10 to-transparent" />
-      </div>
+
 
       {/* Controls */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">

@@ -25,58 +25,11 @@ function StatusBadge({ item }: { item: RansomwareFamily }) {
 }
 
 export function Victims() {
-  const victims = useMemo(
-    () =>
-      ransomwareData.filter(
-        (item) =>
-          item.name === 'Strategy First International College' ||
-          item.name === 'Job Net .COM.MM'
-      ),
-    []
-  );
-
-  const stats = [
-    { label: 'Total Breached', value: victims.length },
-    { label: 'Leaked', value: victims.filter((v) => v.status !== 'Soon' && v.pricing === 'Free').length },
-    { label: 'For Sale', value: victims.filter((v) => v.pricing === 'Paid').length },
-    { label: 'Upcoming', value: victims.filter((v) => v.status === 'Soon').length },
-  ];
+  const victims = useMemo(() => ransomwareData, []);
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-      {/* Section header */}
-      <div className="mb-8">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-1 bg-red-600 glow-red" />
-          <div className="flex-1">
-            <p className="text-[10px] sm:text-[11px] text-red-500 tracking-[0.45em] uppercase font-bold mb-1">
-              {'//'} compromised_entities
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white uppercase tracking-wide">
-              Victim <span className="text-red-600 glow-text">Database</span>
-            </h2>
-          </div>
-          <div className="hidden md:flex items-center gap-2 text-[10px] text-white/40 tracking-[0.3em] uppercase">
-            <span className="inline-block w-2 h-2 bg-red-600 animate-pulse" />
-            Registry // Live
-          </div>
-        </div>
-        <div className="mt-4 h-px bg-gradient-to-r from-red-600/80 via-white/10 to-transparent" />
-      </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/10 border border-white/10 mb-8">
-        {stats.map((s) =>
-          <div key={s.label} className="bg-black px-4 py-5">
-            <div className="text-2xl font-bold text-red-500 glow-text">
-              {s.value}
-            </div>
-            <div className="text-[9px] uppercase tracking-[0.25em] text-white/40 mt-1">
-              {s.label}
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* Registry table */}
       <div className="corner-brackets bg-black border border-white/10">

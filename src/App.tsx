@@ -3,14 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Download,
   Send,
-  Terminal,
   X,
   Database,
-  AlertTriangle,
-  Skull,
-  Shield } from
+  AlertTriangle } from
 'lucide-react';
-import { ransomwareData, RansomwareFamily } from './data/ransomware';
+import { RansomwareFamily } from './data/ransomware';
 import { useScreenInit } from './useScreenInit';
 import { Breaches } from './pages/Breaches';
 import { Victims } from './pages/Victims';
@@ -61,53 +58,11 @@ function buildReport(family: RansomwareFamily) {
   join('\n');
 }
 
-const HERO = {
-  breaches: {
-    label: 'root@normal-hunters:~$',
-    title: ['DATA ', 'BREACHES'],
-    path: 'data_breaches',
-    short: 'Breaches',
-    desc: 'Exclusive database of compromised corporate data, stolen credentials, and sensitive information. Access premium datasets from major breaches.',
-  },
-  victims: {
-    label: 'root@normal-hunters:~$',
-    title: ['VICTIM ', 'DATABASE'],
-    path: 'victim_database',
-    short: 'Victims',
-    desc: 'Complete registry of compromised organizations, leaked credentials and affected entities from active operations.',
-  },
-  mirror: {
-    label: 'root@normal-hunters:~$',
-    title: ['MIRROR / ', 'TOR'],
-    path: 'mirror_tor',
-    short: 'Mirror/Tor',
-    desc: 'Live network status for Tor onions and clearnet mirrors. Verify reachability and fingerprints before any connection.',
-  },
-  forums: {
-    label: 'root@normal-hunters:~$',
-    title: ['BREACH', 'FORUM'],
-    path: 'breachforum',
-    short: 'BreachForums',
-    desc: 'The BreachForums network is offline. Archive records, operator statements and migration logs for the defunct platform.',
-  },
-  contact: {
-    label: 'root@normal-hunters:~$',
-    title: ['SECURE ', 'CHANNELS'],
-    path: 'secure_channels',
-    short: 'Contact',
-    desc: 'Encrypted communication channels for Normal Hunters inquiries, exclusive database access and secure transaction coordination.',
-  },
-} as const;
+
 
 type Tab = 'breaches' | 'victims' | 'mirror' | 'forums' | 'contact';
 
-function ForumsHero({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
-  const stats = [
-    { label: 'Archived Listings', value: '12,408' },
-    { label: 'Verified Vendors', value: '84' },
-    { label: 'Days Offline', value: '39' },
-    { label: 'Active Operators', value: '3' },
-  ];
+function ForumsHero() {
   return (
     <section className="relative overflow-hidden border-b border-red-900/40 bg-black">
       <div className="absolute inset-0 breach-grid" />
@@ -137,56 +92,12 @@ function ForumsHero({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
             BREACH<span className="text-red-600">FORUM</span>
           </h1>
           <p className="mt-4 text-[11px] sm:text-sm uppercase tracking-[0.5em] text-white/50">
-            The network is <span className="text-red-500 font-bold">down</span> // we are not //
+            The network is <span className="text-green-500 font-bold">Up</span> // we are not //
           </p>
         </div>
-
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          <span className="clip-corner inline-flex items-center gap-2 bg-red-600 text-black px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest animate-pulse">
-            <Skull className="w-3.5 h-3.5" />
-            Status: Defunct
-          </span>
-          <span className="inline-flex items-center gap-2 border border-white/25 text-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest">
-            <span className="inline-block w-1.5 h-1.5 bg-red-600 animate-pulse" />
-            Est. 2024
-          </span>
-          <span className="inline-flex items-center gap-2 border border-white/25 text-white px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest">
-            <Shield className="w-3.5 h-3.5 text-red-500" />
-            Root0x Operator
-          </span>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3 mb-10">
-          <a
-            href="#content"
-            className="clip-corner flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-colors glow-red">
-            <Skull className="w-4 h-4" />
-            View The Archive
-          </a>
-          <button
-            type="button"
-            onClick={() => onNavigate('contact')}
-            className="clip-corner flex items-center gap-2 px-5 py-3 border border-white/25 hover:border-red-600 text-white/70 hover:text-red-400 text-sm uppercase tracking-wider transition-colors cursor-pointer">
-            <Terminal className="w-4 h-4" />
-            Contact Operators
-          </button>
-        </div>
-
-        <div className="corner-brackets grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/10 border border-white/10">
-          {stats.map((s) =>
-            <div key={s.label} className="bg-black px-4 py-5">
-              <div className="text-2xl font-bold text-red-500 glow-text">
-                {s.value}
-              </div>
-              <div className="text-[9px] uppercase tracking-[0.25em] text-white/40 mt-1">
-                {s.label}
-              </div>
-            </div>
-          )}
-          </div>
-        </div>
-      </section>
-      );
+      </div>
+    </section>
+  );
 }
 
 export function App() {
@@ -196,10 +107,6 @@ export function App() {
     null
   );
 
-  const downloadAll = () => {
-    const all = ransomwareData.map(buildReport).join('\n\n');
-    downloadText('threatintel_dataset_root0x.txt', all);
-  };
   return (
     <div className="hacker-bg scanline min-h-screen w-full text-white/80 font-hack pb-16 selection:bg-red-500/30">
       {/* Nav Bar */}
@@ -223,12 +130,12 @@ export function App() {
             <button
               onClick={() => setActiveTab('breaches')}
               className={`hover:text-red-400 transition-colors ${activeTab === 'breaches' ? 'text-red-400' : ''}`}>
-              Breaches
+              Victims
             </button>
             <button
               onClick={() => setActiveTab('victims')}
               className={`hover:text-red-400 transition-colors ${activeTab === 'victims' ? 'text-red-400' : ''}`}>
-              Victims
+              Leaked
             </button>
             <button
               onClick={() => setActiveTab('mirror')}
@@ -256,82 +163,8 @@ export function App() {
         </nav>
       </header>
 
-      {/* Marquee disclaimer ticker */}
-      <div
-        id="top"
-        className="overflow-hidden border-b border-red-900/30 bg-red-950/20 py-2">
-
-        <div className="marquee-track text-[11px] uppercase tracking-[0.25em] text-red-400/80">
-          {Array.from({
-            length: 2
-          }).map((_, i) =>
-          <span key={i} className="px-4">
-              ⚠ NORMAL HUNTERS ACTIVE // EXCLUSIVE DATABASES AVAILABLE //
-              DYSPHOR1A GROUP DATA FOR SALE // ENCRYPTED PAYLOADS READY ⚠
-              EXCLUSIVE ACCESS ONLY // LIMITED TIME OFFERS //
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Hero */}
-      {activeTab === 'forums' ? (
-        <ForumsHero onNavigate={setActiveTab} />
-      ) : (
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
-          <p className="text-red-500/80 text-xs tracking-[0.4em] uppercase mb-4">
-            // {HERO[activeTab].label}
-          </p>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
-            {HERO[activeTab].title[0]}
-            <span className="text-red-500 glow-text flicker">{HERO[activeTab].title[1]}</span>
-            <span className="cursor-blink text-red-500">_</span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-sm sm:text-base text-white/60 leading-relaxed">
-            {HERO[activeTab].desc}
-          </p>
-          <div className="mt-7 flex flex-wrap items-center gap-3">
-            {activeTab === 'breaches' && (
-              <button
-                onClick={downloadAll}
-                className="clip-corner flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-colors glow-red">
-
-                <Download className="w-4 h-4" />
-                Download All
-              </button>
-            )}
-            <a
-              href="#content"
-              className="clip-corner flex items-center gap-2 px-5 py-3 border border-white/25 hover:border-red-600 text-white/70 hover:text-red-400 text-sm uppercase tracking-wider transition-colors">
-
-              <Terminal className="w-4 h-4" />
-              {HERO[activeTab].short}
-            </a>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-px bg-red-900/30 border border-red-900/30">
-            {[
-              { label: 'Breaches', value: ransomwareData.length },
-              {
-                label: 'Critical',
-                value: ransomwareData.filter((d) => d.severity === 'Critical').length,
-              },
-              { label: 'Active', value: '2025–2026' },
-              { label: 'Seller', value: 'Normal Hunters' },
-            ].map((s) =>
-              <div key={s.label} className="bg-black/70 px-4 py-5">
-                <div className="text-2xl font-bold text-red-500 glow-text">
-                  {s.value}
-                </div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-white/40 mt-1">
-                  {s.label}
-                </div>
-              </div>
-            )}
-          </div>
-        </section>
-      )}
+      {/* Tab Content */}
+      {activeTab === 'forums' && <ForumsHero />}
 
       {/* Tab Content */}
       <div id="content">

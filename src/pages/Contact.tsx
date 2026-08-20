@@ -1,57 +1,8 @@
-import { Send, MessageCircle, Lock, EyeOff, Database, Shield, ChevronRight } from 'lucide-react';
+import { Send, MessageCircle, ChevronRight, Globe, DollarSign } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 const TELEGRAM = '@normalhunters0x';
 const SESSION = '@normalhunters0x';
-
-interface Service {
-  icon: LucideIcon;
-  title: string;
-  items: string[];
-}
-
-const SERVICES: Service[] = [
-  {
-    icon: Lock,
-    title: 'Contact Encryption',
-    items: [
-      'All communications are end-to-end encrypted using Signal Protocol',
-      'No logs or metadata retention - messages self-destruct after 24 hours',
-      'PGP key available upon request for sensitive data transfers',
-      'Secure drop zones for anonymous submissions via Tor hidden services',
-    ],
-  },
-  {
-    icon: EyeOff,
-    title: 'Hiding Services',
-    items: [
-      'Onion routing for complete anonymity and IP obfuscation',
-      'Multi-hop VPN chains with jurisdictional separation',
-      'Disposable communication channels for each transaction',
-      'Zero-knowledge proof authentication - no credentials stored',
-    ],
-  },
-  {
-    icon: Database,
-    title: 'Selling Services',
-    items: [
-      'Exclusive database access with tiered pricing based on data sensitivity',
-      'Custom data extraction and filtering services available',
-      'Bulk dataset packages with volume discounts for resellers',
-      'Escrow services for high-value transactions with trusted third parties',
-    ],
-  },
-  {
-    icon: Shield,
-    title: 'Breach Services',
-    items: [
-      'Full breach intelligence reports with technical analysis',
-      'Access to raw exfiltrated data samples for verification',
-      'Custom breach notifications and ransom negotiation support',
-      'Post-breach remediation and security assessment consulting',
-    ],
-  },
-];
 
 function ChannelCard({
   icon: Icon,
@@ -134,34 +85,107 @@ export function Contact() {
         <ChannelCard icon={MessageCircle} label="Session" handle={SESSION} hint="Session id verified" />
       </div>
 
-      {/* Services */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {SERVICES.map((service) => {
-          const Icon = service.icon;
-          return (
-            <div
-              key={service.title}
-              className="corner-brackets group bg-black border border-white/10 hover:border-red-600/50 transition-colors">
-              <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10 bg-white/[0.03]">
-                <Icon className="w-5 h-5 text-red-500" />
-                <h3 className="font-bold text-white uppercase tracking-wider text-sm">
-                  {service.title}
-                </h3>
-                <span className="ml-auto text-red-500 text-sm">//</span>
+      {/* Sources */}
+      <div className="mb-12">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-6 w-1 bg-red-600 glow-red" />
+          <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+            Sources
+          </h3>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a
+            href="https://null.yzz.me/"
+            target="_blank"
+            rel="noreferrer"
+            className="corner-brackets group flex flex-col p-5 bg-black border border-white/10 hover:border-red-600/70 transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 group-hover:scale-110 transition-all">
+                <Globe className="w-5 h-5" />
               </div>
-              <ul className="p-5 space-y-3">
-                {service.items.map((item) =>
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-white/60 leading-relaxed">
-                    <span className="text-red-500 mt-1 text-xs font-bold shrink-0">▸</span>
-                    {item}
-                  </li>
-                )}
-              </ul>
+              <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Official Site</span>
             </div>
-          );
-        })}
+            <div className="text-sm text-white/70 group-hover:text-red-400 transition-colors break-all">
+              null.yzz.me
+            </div>
+            <div className="text-[10px] text-white/30 mt-1 break-all">
+              dysphor1a.zya.me
+            </div>
+            <span className="inline-block mt-2 text-[9px] uppercase tracking-widest text-white/30 border border-white/15 px-2 py-0.5 self-start">
+              Under Maintenance
+            </span>
+          </a>
+
+          <a
+            href="https://t.me/jacudeez"
+            target="_blank"
+            rel="noreferrer"
+            className="corner-brackets group flex flex-col p-5 bg-black border border-white/10 hover:border-red-600/70 transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 group-hover:scale-110 transition-all">
+                <Send className="w-5 h-5" />
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Telegram Channel</span>
+            </div>
+            <div className="text-sm text-white/70 group-hover:text-red-400 transition-colors">
+              t.me/jacudeez
+            </div>
+          </a>
+
+          <a
+            href="https://t.me/normalhuntercrime"
+            target="_blank"
+            rel="noreferrer"
+            className="corner-brackets group flex flex-col p-5 bg-black border border-white/10 hover:border-red-600/70 transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 group-hover:scale-110 transition-all">
+                <Send className="w-5 h-5" />
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Telegram Group</span>
+            </div>
+            <div className="text-sm text-white/70 group-hover:text-red-400 transition-colors">
+              t.me/normalhuntercrime
+            </div>
+          </a>
+        </div>
+      </div>
+
+      {/* Selling DB */}
+      <div className="mb-12">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-6 w-1 bg-red-600 glow-red" />
+          <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+            Selling DB
+          </h3>
+        </div>
+        <div className="corner-brackets bg-black border border-white/10 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500">
+              <DollarSign className="w-5 h-5" />
+            </div>
+            <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Accepted Payments</span>
+          </div>
+          <div className="flex flex-wrap gap-3 mb-5">
+            <span className="clip-corner px-3 py-1.5 border border-red-600/60 text-red-400 text-[10px] font-bold uppercase tracking-widest">ETH</span>
+            <span className="clip-corner px-3 py-1.5 border border-red-600/60 text-red-400 text-[10px] font-bold uppercase tracking-widest">BTC</span>
+            <span className="clip-corner px-3 py-1.5 border border-red-600/60 text-red-400 text-[10px] font-bold uppercase tracking-widest">XMR</span>
+          </div>
+          <div className="border-t border-white/10 pt-4">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-white/40 mb-2">Contact for DB Sales</p>
+            <a
+              href="https://t.me/suicid_ed"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-white hover:text-red-400 transition-colors"
+            >
+              <Send className="w-4 h-4" />
+              <span className="font-bold">@suicid_ed</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* Footer */}

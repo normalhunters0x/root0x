@@ -1,0 +1,13 @@
+Hello,
+
+I am offering a database containing the records of 52,000 Indonesian police officers. The data includes email addresses, phone numbers, first and last names, passwords, and location details, along with 4,000 facial photographs.
+
+@suicid_ed Is the one that sells it as well. We will provide sample of the data as well some pictures.
+
+Compromised: id_pengguna,nama,nrp,password,id_kesatuan,id_peran,status,email,no_mobile,otp_kode,otp_berlaku,totp_key,waktu_ganti_password,online_status,last_online,latitude,longitude,device_id,fcm_token,device_os,face_data,lock_jenis,lock_last_data
+
+I am offering this data for a price range of $550 to $2350, obviously price is negotiable.
+
+WE accept ETH, BTC, XMR.
+
+You can contact @suicid_ed
