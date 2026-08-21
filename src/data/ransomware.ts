@@ -551,4 +551,33 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active'
+},
+{
+  id: 'yoma-fleet',
+  name: 'Yoma Fleet',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Business / Vehicle Leasing',
+  country: '\u{1F1F2}\u{1F1F2} Myanmar',
+  description:
+  'Yoma Fleet is a leading vehicle operating lease, rental, and financing company based in Yangon, Myanmar. The platform provides centralized administration and management for vehicle orders, employee financing, repayments, users, and employee records. Admin account access — need to contact on Telegram.',
+  mechanism:
+  'Compromised admin panel exposing full operational data including user information, order details, repayment records, and employee management systems.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full admin access to Yoma Fleet platform including order management, repayments, users, and employee records with exported CSV datasets.',
+  pricing: 'Free',
+  price: '$0',
+  imageLinks: [
+    '/download/Free/yoma-fleet/Example Photo/All Orders.png',
+    '/download/Free/yoma-fleet/Example Photo/Incude Order Details.png',
+    '/download/Free/yoma-fleet/Example Photo/User Managemnt Single User Account.png'
+  ],
+  warning: false,
+  detectionTime: 0,
+  dataSize: 'Orders, users, repayments, employees — full admin export',
+  buyerRestriction: 'Null',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active'
 }];

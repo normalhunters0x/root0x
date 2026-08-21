@@ -378,6 +378,11 @@ export function App() {
                       '/download/Free/SFIC Student Accounts.xlsx.zip',
                       'SFIC Student Accounts.xlsx.zip'
                     );
+                  } else if (selectedFamily.id === 'yoma-fleet') {
+                    downloadZipFile(
+                      '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
+                      'Data-Minimum-DYSPHOR1A.zip'
+                    );
                   } else {
                     downloadText(
                       `${selectedFamily.id}_intel_root0x.txt`,

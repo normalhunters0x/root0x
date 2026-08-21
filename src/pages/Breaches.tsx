@@ -212,6 +212,11 @@ function BreachCard({
                   '/download/Free/SFIC Student Accounts.xlsx.zip',
                   'SFIC Student Accounts.xlsx.zip'
                 );
+              } else if (family.id === 'yoma-fleet') {
+                downloadZipFile(
+                  '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
+                  'Data-Minimum-DYSPHOR1A.zip'
+                );
               } else {
                 downloadText(
                   `${family.id}_intel_root0x.txt`,
