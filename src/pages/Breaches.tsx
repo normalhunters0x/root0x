@@ -60,8 +60,15 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
   }
   if (family.pricing === 'Free') {
     return (
-      <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
-        Leaked
+      <span className="inline-flex items-center gap-1.5">
+        <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
+          Leaked
+        </span>
+        {family.isNew && (
+          <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
+            New
+          </span>
+        )}
       </span>
     );
   }
