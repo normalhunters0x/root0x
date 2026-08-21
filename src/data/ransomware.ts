@@ -581,5 +581,6 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active',
+  isNew: true,
   logo: '/download/Free/yoma-fleet/yomafleet-logo.webp'
 }];
