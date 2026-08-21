@@ -1,0 +1,41 @@
+Yoma Fleet Admin
+
+Yoma Fleet is a leading vehicle operating lease, rental, and financing company based in Yangon, Myanmar.
+
+The platform provides centralized administration and management for vehicle orders, employee financing, repayments, users, and employee records.
+
+Include User Information and Order Details See all about of example photo
+
+Operation By Normal Hunters , DYSPHOR1A Ransomware Group
+
+Can Downlaod Free and Example 
+
+Country - Myanmar 
+
+Admin Access  ( Entity HR Account )
+
+https://yoma.admin.yomafleet.tech/signin
+
+and Sub Domain https://carshare.yomafleet.com/ 
+
+and User mail - zlatarsky@hotmail.com , pwd - obulgaria
+
+Example 
+
+Order Management (All)
+
+Order ID,Add-on Service,Product Name,Employee Name,Employee ID,Plus Employee ID,Identification,Organization,Entity,Applied Date,Approval Method,Minimum Salary,Total Minimum Salary,Price,Down Payment Amount,Down Payment (%),Down Payment Type,Down Payment Status,Down Payment Merchant Ref ID,Early Payment Merchant Ref ID,Merchant,Order Status,Admin Fee,Monthly Repayment,Repayment Period,Rejected Reason (if any),Collected Date,Payroll Account Number,Variant Name,Pickup Location
+
+
+Repayments Management
+
+No,Organization Name,Entity,Approve Date,Deduction Date,Number of Subscriptions,Number of Paid Subscriptions,Deduction Method,Total Repayment Amount,Organizational Repayment Amount,Yoma Bank Repayment Amount,Direct Repayment Amount,External Repayment Amount,Actual Repayment Amount,Outstanding Repayment Amount (if any),Status,Remark
+
+Users Management 
+
+No,Plus Employee ID,Name,Identification Number,Employee ID,Organization,Entity,Phone Number,Email,Status,Registered At
+
+Employees Management
+
+
+No,Plus Employee ID,Name,Employee ID,Organization,Entity,Email,Identification Number,Phone Number,Approval Method,YB Account Number,Joined Date,Created At,Status
