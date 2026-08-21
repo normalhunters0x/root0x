@@ -377,16 +377,13 @@ export function App() {
                       '/download/Free/Job Net.COM.MM ( User Account ).zip',
                       'Job Net.COM.MM (User Account).zip'
                     );
-                  } else if (selectedFamily.id === 'sfic') {
-                    downloadZipFile(
-                      '/download/Free/SFIC Student Accounts.xlsx.zip',
-                      'SFIC Student Accounts.xlsx.zip'
-                    );
                   } else if (selectedFamily.id === 'yoma-fleet') {
                     downloadZipFile(
                       '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
                       'Data-Minimum-DYSPHOR1A.zip'
                     );
+                  } else if (selectedFamily.id === 'announcement') {
+                    return;
                   } else {
                     downloadText(
                       `${selectedFamily.id}_intel_root0x.txt`,

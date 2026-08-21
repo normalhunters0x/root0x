@@ -209,36 +209,37 @@ function BreachCard({
             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
             Transfer Pending
           </button>
-        ) : family.pricing === 'Free' ? (
+        ) : family.id === 'announcement' ? (
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              if (family.id === 'jobnet') {
-                downloadZipFile(
-                  '/download/Free/Job Net.COM.MM ( User Account ).zip',
-                  'Job Net.COM.MM (User Account).zip'
-                );
-              } else if (family.id === 'sfic') {
-                downloadZipFile(
-                  '/download/Free/SFIC Student Accounts.xlsx.zip',
-                  'SFIC Student Accounts.xlsx.zip'
-                );
-              } else if (family.id === 'yoma-fleet') {
-                downloadZipFile(
-                  '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
-                  'Data-Minimum-DYSPHOR1A.zip'
-                );
-              } else {
-                downloadText(
-                  `${family.id}_intel_root0x.txt`,
-                  buildReport(family)
-                );
-              }
-            }}
-            className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
-            <Download className="w-4 h-4" />
-            Download Database
+            disabled
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
+            Removed — Payment Received
           </button>
+        ) : family.pricing === 'Free' ? (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (family.id === 'jobnet') {
+                  downloadZipFile(
+                    '/download/Free/Job Net.COM.MM ( User Account ).zip',
+                    'Job Net.COM.MM (User Account).zip'
+                  );
+                } else if (family.id === 'yoma-fleet') {
+                  downloadZipFile(
+                    '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
+                    'Data-Minimum-DYSPHOR1A.zip'
+                  );
+                } else {
+                  downloadText(
+                    `${family.id}_intel_root0x.txt`,
+                    buildReport(family)
+                  );
+                }
+              }}
+              className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
+              <Download className="w-4 h-4" />
+              Download Database
+            </button>
         ) : (
           <>
             <div className="flex items-center justify-between mb-3">
