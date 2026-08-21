@@ -236,7 +236,11 @@ export function App() {
                 <div className="min-w-0">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 shrink-0">
-                      <Database className="w-5 h-5" />
+                      {selectedFamily.logo ? (
+                        <img src={selectedFamily.logo} alt={selectedFamily.name} className="w-5 h-5 object-contain" />
+                      ) : (
+                        <Database className="w-5 h-5" />
+                      )}
                     </div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wide truncate">
                       {selectedFamily.name}

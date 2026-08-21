@@ -22,6 +22,7 @@ export interface RansomwareFamily {
   saleDateTime: string;
   status: 'Active' | 'Soon';
   isNew?: boolean;
+  logo?: string;
 }
 
 export const ransomwareData: RansomwareFamily[] = [
@@ -579,5 +580,6 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   buyerRestriction: 'Null',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  logo: '/download/Free/yoma-fleet/yomafleet-logo.webp'
 }];

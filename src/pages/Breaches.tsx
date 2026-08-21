@@ -158,7 +158,11 @@ function BreachCard({
             </p>
           </div>
           <div className="p-2.5 border border-red-700/50 bg-red-950/40 text-red-500 shrink-0 group-hover:bg-red-950/70 transition-colors">
-            <Database className="w-5 h-5" />
+            {family.logo ? (
+              <img src={family.logo} alt={family.name} className="w-5 h-5 object-contain" />
+            ) : (
+              <Database className="w-5 h-5" />
+            )}
           </div>
         </div>
 
