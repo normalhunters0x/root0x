@@ -395,30 +395,6 @@ export const ransomwareData: RansomwareFamily[] = [
 //   status: 'Active'
 // },
 {
-  id: 'announcement',
-  name: 'Announcement',
-  year: 2026,
-  severity: 'Medium',
-  target: 'Notice',
-  country: 'Global',
-  description:
-  'The Strategy First International College (SFIC) database has been removed. Payment was received and the database has been permanently taken down. No further access will be provided.',
-  mechanism:
-  'N/A',
-  prevention: ['Null'],
-  notableAttack:
-  'SFIC database removed following successful payment. All associated data has been secured and will not be redistributed.',
-  pricing: 'Free',
-  price: '$0',
-  warning: false,
-  detectionTime: 0,
-  dataSize: 'Removed — Payment Received',
-  buyerRestriction: 'Null',
-  saleDate: 'Null',
-  saleDateTime: 'Null',
-  status: 'Active'
-},
-{
   id: 'jobnet',
   name: 'Job Net .COM.MM',
   year: 2026,

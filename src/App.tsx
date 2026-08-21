@@ -382,8 +382,6 @@ export function App() {
                       '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
                       'Data-Minimum-DYSPHOR1A.zip'
                     );
-                  } else if (selectedFamily.id === 'announcement') {
-                    return;
                   } else {
                     downloadText(
                       `${selectedFamily.id}_intel_root0x.txt`,
