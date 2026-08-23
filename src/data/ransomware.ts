@@ -511,7 +511,7 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   year: 2026,
   severity: 'Medium',
   target: 'Education Sector',
-  country: 'Thailand',
+  country: '\u{1F1F2}\u{1F1F2} Myanmar',
   description:
   'Compromised user accounts from GUSTO College\'s GLMS (Global Learning Management System). Exposed user credentials from the Moodle platform at gusto-education.com.',
   mechanism:
