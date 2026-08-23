@@ -39,7 +39,7 @@ export const ransomwareData: RansomwareFamily[] = [
   'Complete infrastructure compromise exposing source code, internal IPs, server configurations, payment processing records (PayPal, Stripe, CB), customer PII, and billing metadata.',
   prevention: ['Null'],
   notableAttack:
-  'Full compromise of Netim Company including source code, infrastructure IPs, payment databases with PayPal/Stripe/CB transaction logs, and customer PII.',
+  'Full infrastructure compromise of Netim Company — source code, internal IPs, server configurations, payment databases (PayPal, Stripe, CB), customer PII, billing metadata, and internal business data. This is not just payment data.',
   pricing: 'Paid',
   price: '$85,000',
   exampleCompromised: `Example Transaction Records (SQL):
@@ -52,7 +52,7 @@ export const ransomwareData: RansomwareFamily[] = [
 ('879743','APM','101','KO','2023-11-30 11:17:00','4856903332','14.40','EUR'),
 ('867360','CB','3','OK','2023-04-19 13:38:00','pi_3MyZLaKCbVAaxKsX1NoOeXTf','50.00','USD')
 
-Also includes: Source code, internal IPs, server configs, customer names, emails, billing addresses, payment tokens, IPN notifications. Records span 2004-2024.`,
+Full records include much more — not just payment data. We also have source code, IPs, server configs, customer names, emails, billing addresses, payment tokens, IPN notifications, and much more. Records span 2004-2024.`,
   warning: true,
   detectionTime: 0,
   dataSize: 'Source code, IPs, payment databases, customer PII — full infrastructure',
