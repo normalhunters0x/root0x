@@ -26,6 +26,43 @@ export interface RansomwareFamily {
 }
 
 export const ransomwareData: RansomwareFamily[] = [
+{
+  id: 'netim',
+  name: 'Netim Company',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Business / Domain Registrar',
+  country: '🇫🇷 France',
+  description:
+  'Netim is a French domain name registrar and web hosting provider. Full compromise of internal systems — source code, infrastructure IPs, payment processing databases, customer PII, and internal business data.',
+  mechanism:
+  'Complete infrastructure compromise exposing source code, internal IPs, server configurations, payment processing records (PayPal, Stripe, CB), customer PII, and billing metadata.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full compromise of Netim Company including source code, infrastructure IPs, payment databases with PayPal/Stripe/CB transaction logs, and customer PII.',
+  pricing: 'Paid',
+  price: '$85,000',
+  exampleCompromised: `Example Transaction Records (SQL):
+
+('14783','VIR','7','ANN','2008-04-12 10:46:00','','14.23','EUR'),
+('853101','PP','6','OK','2013-03-11 08:52:00','3HC63291FT364835V','7.30','EUR'),
+('881093','APM','1047','OK','2024-01-09 15:13:00','004305','28.92','EUR'),
+('867508','CB','3','OK','2023-04-25 13:16:00','pi_3N0jqBKCbVAaxKsX0p4jB5mu','31.00','USD'),
+('856949','PP','6','OK','2021-04-27 07:21:00','85R7629755919230C','289.00','EUR'),
+('879743','APM','101','KO','2023-11-30 11:17:00','4856903332','14.40','EUR'),
+('867360','CB','3','OK','2023-04-19 13:38:00','pi_3MyZLaKCbVAaxKsX1NoOeXTf','50.00','USD')
+
+Also includes: Source code, internal IPs, server configs, customer names, emails, billing addresses, payment tokens, IPN notifications. Records span 2004-2024.`,
+  warning: true,
+  detectionTime: 0,
+  dataSize: 'Source code, IPs, payment databases, customer PII — full infrastructure',
+  buyerRestriction: 'Contact: qtox',
+  saleDate: '08/25',
+  saleDateTime: '2026-08-25T23:59:59-05:00',
+  status: 'Active',
+  isNew: true,
+  logo: '/download/Paid/Netim-Compnay/logo_netim.png'
+},
 // {
 //   id: 'wannacry',
 //   name: 'WannaCry',
@@ -502,8 +539,7 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   buyerRestriction: '[NEGOTIABLE - ETH/BTC/XMR ACCEPTED]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active',
-  isNew: true
+  status: 'Active'
 },
 {
   id: 'gusto-glms',
@@ -581,43 +617,5 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active',
-  isNew: true,
   logo: '/download/Free/yoma-fleet/yomafleet-logo.webp'
-},
-{
-  id: 'netim',
-  name: 'Netim Company',
-  year: 2026,
-  severity: 'Critical',
-  target: 'Business / Domain Registrar',
-  country: '🇫🇷 France',
-  description:
-  'Netim is a French domain name registrar and web hosting provider. Full compromise of internal systems — source code, infrastructure IPs, payment processing databases, customer PII, and internal business data.',
-  mechanism:
-  'Complete infrastructure compromise exposing source code, internal IPs, server configurations, payment processing records (PayPal, Stripe, CB), customer PII, and billing metadata.',
-  prevention: ['Null'],
-  notableAttack:
-  'Full compromise of Netim Company including source code, infrastructure IPs, payment databases with PayPal/Stripe/CB transaction logs, and customer PII.',
-  pricing: 'Paid',
-  price: '$85,000',
-  exampleCompromised: `Example Transaction Records (SQL):
-
-('14783','VIR','7','ANN','2008-04-12 10:46:00','','14.23','EUR'),
-('853101','PP','6','OK','2013-03-11 08:52:00','3HC63291FT364835V','7.30','EUR'),
-('881093','APM','1047','OK','2024-01-09 15:13:00','004305','28.92','EUR'),
-('867508','CB','3','OK','2023-04-25 13:16:00','pi_3N0jqBKCbVAaxKsX0p4jB5mu','31.00','USD'),
-('856949','PP','6','OK','2021-04-27 07:21:00','85R7629755919230C','289.00','EUR'),
-('879743','APM','101','KO','2023-11-30 11:17:00','4856903332','14.40','EUR'),
-('867360','CB','3','OK','2023-04-19 13:38:00','pi_3MyZLaKCbVAaxKsX1NoOeXTf','50.00','USD')
-
-Also includes: Source code, internal IPs, server configs, customer names, emails, billing addresses, payment tokens, IPN notifications. Records span 2004-2024.`,
-  warning: true,
-  detectionTime: 0,
-  dataSize: 'Source code, IPs, payment databases, customer PII — full infrastructure',
-  buyerRestriction: 'Contact: qtox',
-  saleDate: '08/25',
-  saleDateTime: '2026-08-25T23:59:59-05:00',
-  status: 'Active',
-  isNew: true,
-  logo: '/download/Paid/Netim-Compnay/logo_netim.png'
 }];
