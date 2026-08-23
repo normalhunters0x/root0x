@@ -8,7 +8,6 @@ import {
   AlertTriangle,
   Timer,
   Shield,
-  Bell,
 } from 'lucide-react';
 import { ransomwareData, RansomwareFamily } from '../data/ransomware';
 import { downloadText, downloadZipFile } from '../utils/download';
@@ -334,17 +333,6 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
 
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-
-      {/* Notification Bar */}
-      <div className="flex items-center gap-3 px-4 py-2.5 mb-6 border border-red-900/50 bg-red-950/20">
-        <span className="flex items-center gap-1.5 px-2 py-0.5 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest shrink-0">
-          <Bell className="w-3 h-3" />
-          Noti
-        </span>
-        <p className="text-[11px] text-white/60 leading-relaxed">
-          <span className="text-white/80 font-bold">Strategy First International College</span> database has been removed — payment was received and all associated content has been taken down.
-        </p>
-      </div>
 
       {/* Controls */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
