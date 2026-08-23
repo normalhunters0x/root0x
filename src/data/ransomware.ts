@@ -583,4 +583,46 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   status: 'Active',
   isNew: true,
   logo: '/download/Free/yoma-fleet/yomafleet-logo.webp'
+},
+{
+  id: 'netim',
+  name: 'Netim Company',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Business / Domain Registrar',
+  country: '🇫🇷 France',
+  description:
+  'Netim is a French domain name registrar and web hosting provider. Compromised internal payment processing database containing full transaction records, customer PII, payment gateway credentials (PayPal, Stripe, CB), and billing system data.',
+  mechanism:
+  'Compromised internal payment processing system exposing transaction records with customer PII, payment tokens, IPN notifications, and billing metadata.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full database of Netim Company payment transactions including PayPal IPN data, Stripe charge records, and CB/VISA/MASTERCARD transaction logs with customer PII.',
+  pricing: 'Paid',
+  price: '$85,000',
+  exampleCompromised: `Example Transaction Records (SQL format):
+
+('14783','VIR','7','ANN','2008-04-12 10:46:00','',NULL,'14.23','0.00','EUR','14.23000000'),
+('853101','PP','6','OK','2013-03-11 08:52:00','3HC63291FT364835V',NULL,'7.30','7.30','EUR'),
+('881093','APM','1047','OK','2024-01-09 15:13:00','004305','08ac3a5b9020978e','28.92','28.92','EUR'),
+('867508','CB','3','OK','2023-04-25 13:16:00','pi_3N0jqBKCbVAaxKsX0p4jB5mu','4dc15895c5a341eb','31.00','28.78','USD'),
+('867360','CB','3','OK','2023-04-19 13:38:00','pi_3MyZLaKCbVAaxKsX1NoOeXTf','05d8ae816784e0ac','50.00','50.00','USD'),
+('856949','PP','6','OK','2021-04-27 07:21:00','85R7629755919230C',NULL,'289.00','289.00','EUR'),
+('854739','PP','6','OK','2016-06-27 10:32:00','58T65868GC056750W',NULL,'5.28','5.28','EUR'),
+('853803','PP','6','OK','2014-06-05 10:29:00','6BF60731CV5076019',NULL,'13.20','13.20','EUR'),
+('879743','APM','101','KO','2023-11-30 11:17:00','4856903332','8f4e92d773909b72','14.40','14.40','EUR')
+
+Payment Methods: CB, PayPal (PP), Stripe (CB/3), APM, VIR, CHQ, AVO
+Currencies: EUR, USD, CHF
+Full records include: customer names, emails, IPs, billing addresses, payment tokens
+Records span: 2004 - 2024 (20+ years of transaction data)`,
+  warning: true,
+  detectionTime: 0,
+  dataSize: '~64+ transaction records with full PII and payment data',
+  buyerRestriction: 'Contact: qtox',
+  saleDate: '08/25',
+  saleDateTime: '2026-08-25T23:59:59-05:00',
+  status: 'Active',
+  isNew: true,
+  logo: '/download/Paid/Netim-Compnay/logo_netim.png'
 }];

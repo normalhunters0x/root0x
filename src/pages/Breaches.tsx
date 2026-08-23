@@ -334,6 +334,18 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
 
+      {/* News / Announcement Bar */}
+      <div className="mb-6 border border-red-900/60 bg-red-950/10 p-4 flex items-center gap-4">
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="inline-block w-2 h-2 bg-red-600 animate-pulse" />
+          <span className="text-[9px] font-bold text-red-500 tracking-[0.35em] uppercase">News</span>
+        </div>
+        <div className="h-4 w-px bg-red-900/60" />
+        <p className="text-[10px] text-white/50 tracking-wider uppercase">
+          NEW: Netim Company database now available for auction — 48h countdown active — <span className="text-red-400">FRANCE // Payment Processing System</span>
+        </p>
+      </div>
+
       {/* Controls */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
         <div className="relative w-full sm:max-w-md">

@@ -1,0 +1,21 @@
+﻿No,Organization Name,Entity,Approve Date,Deduction Date,Number of Subscriptions,Number of Paid Subscriptions,Deduction Method,Total Repayment Amount,Organizational Repayment Amount,Yoma Bank Repayment Amount,Direct Repayment Amount,External Repayment Amount,Actual Repayment Amount,Outstanding Repayment Amount (if any),Status,Remark
+1,Yoma,(Corporate) Yoma Nominee,-,30-06-2026 1:00 AM,2,0,HR,"Ks 1,423,557","Ks 1,423,557",Ks 0,,,Ks 0,"Ks 1,423,557",OPS_PENDING,
+2,Yoma,(Yoma Financial Services) Yoma Fleet,-,30-06-2026 1:00 AM,4,0,HR,"Ks 2,750,697","Ks 2,750,697",Ks 0,,,Ks 0,"Ks 2,750,697",IN_PROGRESS,
+3,Yoma,(Yoma Financial Services) Yoma Fleet,10-07-2026 7:52 AM,30-06-2026 1:00 AM,5,5,HR,"Ks 2,752,870","Ks 2,752,870",Ks 0,,,"Ks 2,752,870",Ks 0,COMPLETED,Test
+4,Yoma,(Yoma Financial Services) Yoma Fleet,-,30-06-2026 1:00 AM,5,1,HR,"Ks 2,752,870","Ks 2,752,870",Ks 0,,,Ks 0,"Ks 2,752,870",OPS_CONFIRMED,
+5,Yoma,(Yoma Financial Services) Yoma Fleet,-,30-06-2026 1:00 AM,5,1,HR,"Ks 2,769,654","Ks 2,769,654",Ks 0,,,Ks 0,"Ks 2,769,654",IN_PROGRESS,
+6,Yoma,Yoma Fleet,05-06-2026 3:06 AM,30-06-2026 1:00 AM,20,20,HR,"Ks 2,158,757","Ks 2,158,757",Ks 0,,,"Ks 2,158,757",Ks 0,COMPLETED,testing111
+7,Yoma,Yoma Fleet,-,30-06-2026 1:00 AM,5,0,HR,"Ks 186,671","Ks 186,671",Ks 0,,,Ks 0,"Ks 186,671",OPS_CONFIRMED,
+8,Yoma,(Yoma Financial Services) Yoma Fleet,18-08-2026 9:20 AM,30-06-2026 1:00 AM,6,6,HR,"Ks 4,750,737","Ks 4,750,737",Ks 0,,,"Ks 4,750,737",Ks 0,COMPLETED,Payment confirmed
+9,Yoma,Yoma Fleet,01-04-2026 10:09 AM,30-04-2026 1:00 AM,1,1,HR,"Ks 17,473","Ks 17,473",Ks 0,,,"Ks 17,473",Ks 0,COMPLETED,Approve
+10,Yoma,(Yoma Financial Services) Yoma Fleet,17-03-2026 7:52 AM,31-03-2026 1:00 AM,3,3,HR,"Ks 397,388","Ks 48,178",Ks 0,"Ks 1,047,630",,"Ks 48,178","Ks 349,210",OUTSTANDING,test
+11,Yoma,(Yoma Financial Services) Yoma Fleet,12-05-2026 7:56 AM,28-02-2026 12:00 AM,4,4,HR,"Ks 1,160,400","Ks 811,190",Ks 0,"Ks 1,047,630",,"Ks 811,190","Ks 349,210",OUTSTANDING,test
+12,Yoma,Yoma Fleet,-,28-02-2026 12:00 AM,3,1,HR,"Ks 27,565","Ks 22,731",Ks 0,,"Ks 37,443",Ks 0,"Ks 27,565",PAYMENT_SUBMITTED,
+13,Yoma,Yoma Fleet,-,31-01-2026 12:00 AM,4,0,HR,"Ks 208,758","Ks 198,758",Ks 0,,,Ks 0,"Ks 208,758",PAYMENT_SUBMITTED,
+14,Yoma,Yoma Fleet,-,31-01-2026 12:00 AM,1,0,HR,"Ks 4,355","Ks 4,355",Ks 0,,,Ks 0,"Ks 4,355",FINANCE_PENDING,
+15,Yoma,(Yoma Financial Services) Yoma Fleet,21-01-2026 4:08 AM,31-01-2026 12:00 AM,1,1,Yoma Bank,"Ks 58,934","Ks 58,934",Ks 0,,,"Ks 58,934",Ks 0,COMPLETED,hello
+16,Yoma,(Yoma Financial Services) Yoma Fleet,-,31-01-2026 12:00 AM,1,1,Yoma Bank,"Ks 1,107","Ks 1,107",Ks 0,,,Ks 0,"Ks 1,107",NEED_TO_UPDATE,
+17,Yoma,Yoma Fleet,-,31-01-2026 12:00 AM,1,0,HR,"Ks 169,457","Ks 169,457",Ks 0,,,Ks 0,"Ks 169,457",PAYMENT_SUBMITTED,
+18,Yoma,(Yoma Financial Services) Yoma Fleet,-,31-01-2026 12:00 AM,1,1,Yoma Bank,"Ks 349,210","Ks 349,210",Ks 0,"Ks 1,047,630",,Ks 0,"Ks 349,210",NEED_TO_UPDATE,Wrong import CSV
+19,Yoma,(Yoma Financial Services) Yoma Fleet,-,31-01-2026 12:00 AM,1,0,Yoma Bank,"Ks 676,538","Ks 676,538",Ks 0,,,Ks 0,"Ks 676,538",NEED_TO_UPDATE,Wrong import CSV
+20,Yoma,Yoma Fleet,12-01-2026 7:44 AM,31-01-2026 12:00 AM,1,1,HR,"Ks 17,473","Ks 7,000",Ks 0,,,"Ks 7,000","Ks 10,473",OUTSTANDING,test
