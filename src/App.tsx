@@ -355,7 +355,9 @@ export function App() {
               <div className="flex flex-col sm:flex-row gap-3 justify-end p-6 border-t border-white/10 bg-white/[0.03]">
                 <button
                 onClick={() => {
-                  if (selectedFamily.samplePath) {
+                  if (selectedFamily.downloadSourceUrl) {
+                    window.open(selectedFamily.downloadSourceUrl, '_blank');
+                  } else if (selectedFamily.samplePath) {
                     downloadFile(selectedFamily.samplePath, selectedFamily.sampleFileName || 'sample.txt');
                   } else {
                     downloadText(

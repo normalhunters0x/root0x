@@ -228,7 +228,9 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (family.samplePath) {
+                if (family.downloadSourceUrl) {
+                  window.open(family.downloadSourceUrl, '_blank');
+                } else if (family.samplePath) {
                   downloadFile(family.samplePath, family.sampleFileName || 'sample.txt');
                 } else {
                   downloadText(
