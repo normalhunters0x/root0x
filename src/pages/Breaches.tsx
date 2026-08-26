@@ -193,6 +193,14 @@ function BreachCard({
               </span>
             </span>
           )}
+          {family.downloadSourceUrl && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-red-900/70 bg-red-950/30">
+              <Download className="w-3 h-3 text-red-500" />
+              <span className="text-[9px] text-red-400 uppercase tracking-wider">
+                Download Source
+              </span>
+            </span>
+          )}
         </div>
 
         <p className="text-xs text-white/50 leading-relaxed mb-5 line-clamp-3">
@@ -228,9 +236,7 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (family.downloadSourceUrl) {
-                  window.open(family.downloadSourceUrl, '_blank');
-                } else if (family.samplePath) {
+                if (family.samplePath) {
                   downloadFile(family.samplePath, family.sampleFileName || 'sample.txt');
                 } else {
                   downloadText(
