@@ -10,7 +10,7 @@ import {
   Shield,
 } from 'lucide-react';
 import { ransomwareData, RansomwareFamily } from '../data/ransomware';
-import { downloadText, downloadZipFile } from '../utils/download';
+import { downloadText, downloadFile } from '../utils/download';
 
 function formatCountdown(saleDateTime: string): { days: number; hours: number; seconds: number } {
   try {
@@ -185,11 +185,11 @@ function BreachCard({
               </span>
             </span>
           )}
-          {family.downloadSourceUrl && (
+          {family.samplePath && (
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-red-900/70 bg-red-950/30">
               <Download className="w-3 h-3 text-red-500" />
               <span className="text-[9px] text-red-400 uppercase tracking-wider">
-                {family.downloadFileName || 'Download Available'}
+                {family.sampleFileName || 'Sample Available'}
               </span>
             </span>
           )}
@@ -228,23 +228,8 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (family.id === 'netim') {
-                  downloadText(
-                    'lastchance.txt',
-                    `SAMPLE DATA // ${family.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
-                  );
-                } else if (family.downloadSourceUrl) {
-                  window.open(family.downloadSourceUrl, '_blank');
-                } else if (family.id === 'jobnet') {
-                  downloadZipFile(
-                    '/download/Free/Job Net.COM.MM ( User Account ).zip',
-                    'Job Net.COM.MM (User Account).zip'
-                  );
-                } else if (family.id === 'yoma-fleet') {
-                  downloadZipFile(
-                    '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
-                    'Data-Minimum-DYSPHOR1A.zip'
-                  );
+                if (family.samplePath) {
+                  downloadFile(family.samplePath, family.sampleFileName || 'sample.txt');
                 } else {
                   downloadText(
                     `${family.id}_sample_root0x.txt`,

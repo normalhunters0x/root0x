@@ -23,8 +23,8 @@ export interface RansomwareFamily {
   status: 'Active' | 'Soon';
   isNew?: boolean;
   logo?: string;
-  downloadSourceUrl?: string;
-  downloadFileName?: string;
+  samplePath?: string;
+  sampleFileName?: string;
   warnContent?: string;
 }
 
@@ -63,8 +63,8 @@ export const ransomwareData: RansomwareFamily[] = [
   status: 'Active',
   isNew: true,
   logo: '/download/Paid/Netim-Compnay/logo_netim.png',
-  downloadSourceUrl: 'https://anonfilesnew.com/s/3XHdZZrBgOj',
-  downloadFileName: 'lastchance.txt'
+  samplePath: '/download/Paid/Netim-Compnay/lastchance.txt',
+  sampleFileName: 'lastchance.txt'
 },
 // {
 //   id: 'wannacry',
@@ -484,7 +484,9 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   buyerRestriction: '[Null]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  samplePath: '/download/Free/Job Net.COM.MM ( User Account ).zip',
+  sampleFileName: 'Job Net.COM.MM (User Account).zip'
 },
 {
   id: 'indo-polic',
@@ -508,7 +510,9 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   buyerRestriction: '[NON-NEGOTIABLE]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  samplePath: '/download/Paid/Indonesian-polic-Db/lastchance.txt',
+  sampleFileName: 'lastchance.txt'
 },
 {
   id: 'delhi-du',
@@ -542,7 +546,9 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   buyerRestriction: '[NEGOTIABLE - ETH/BTC/XMR ACCEPTED]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  samplePath: '/download/Paid/The-University-of-Delhi-(DU)/Sample.txt',
+  sampleFileName: 'Sample.txt'
 },
 {
   id: 'gusto-glms',
@@ -566,7 +572,9 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   buyerRestriction: 'Null',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  samplePath: '/download/Free/gusto-glms/IMAGE 2026-08-20 10:18:43.jpg',
+  sampleFileName: 'gusto-glms-sample.jpg'
 },
 {
   id: 'ayudhya',
@@ -590,7 +598,9 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   buyerRestriction: 'Null',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  samplePath: '/download/Free/ayudhya/IMAGE 2026-08-20 10:17:07.jpg',
+  sampleFileName: 'ayudhya-sample.jpg'
 },
 {
   id: 'yoma-fleet',
@@ -620,5 +630,7 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active',
-  logo: '/download/Free/yoma-fleet/yomafleet-logo.webp'
+  logo: '/download/Free/yoma-fleet/yomafleet-logo.webp',
+  samplePath: '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
+  sampleFileName: 'Data-Minimum-DYSPHOR1A.zip'
 }];

@@ -10,7 +10,7 @@ export function downloadText(filename: string, content: string) {
   URL.revokeObjectURL(url);
 }
 
-export function downloadZipFile(zipPath: string, filename: string) {
+export function downloadFile(filePath: string, filename: string) {
   const a = document.createElement('a');
   a.href = zipPath;
   a.download = filename;
