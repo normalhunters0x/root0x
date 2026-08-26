@@ -23,6 +23,8 @@ export interface RansomwareFamily {
   status: 'Active' | 'Soon';
   isNew?: boolean;
   logo?: string;
+  downloadSourceUrl?: string;
+  downloadFileName?: string;
 }
 
 export const ransomwareData: RansomwareFamily[] = [
@@ -496,14 +498,16 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   notableAttack:
   'Mass exposure of 52,000 Indonesian police officer records with facial photographs and credentials.',
   pricing: 'Paid',
-  price: '$550 - $2,350',
+  price: '$600',
   warning: false,
   detectionTime: 0,
   dataSize: '52,000 officer records + 4,000 facial photos',
-  buyerRestriction: '[Negotiable - ETH/BTC/XMR accepted]',
+  buyerRestriction: '[NON-NEGOTIABLE]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active'
+  status: 'Active',
+  downloadSourceUrl: 'https://anonfilesnew.com/s/3XHdZZrBgOj',
+  downloadFileName: 'lastchance.txt'
 },
 {
   id: 'delhi-du',

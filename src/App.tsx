@@ -346,6 +346,23 @@ export function App() {
                   </section>
                 )}
 
+                {selectedFamily.downloadSourceUrl && (
+                  <section>
+                    <h3 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.3em] text-red-500 mb-3">
+                      <span className="inline-block w-1.5 h-3.5 bg-red-600" />
+                      Download Source
+                    </h3>
+                    <a
+                      href={selectedFamily.downloadSourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block bg-black border-l-2 border-red-600/70 p-4 text-sm text-red-400 hover:text-red-300 underline decoration-red-500/50 hover:decoration-red-400 transition-colors"
+                    >
+                      {selectedFamily.downloadSourceUrl}
+                    </a>
+                  </section>
+                )}
+
                 {selectedFamily.imageLinks && selectedFamily.imageLinks.length > 0 && (
                   <section>
                     <h3 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.3em] text-red-500 mb-3">
@@ -372,7 +389,9 @@ export function App() {
               <div className="flex flex-col sm:flex-row gap-3 justify-end p-6 border-t border-white/10 bg-white/[0.03]">
                 <button
                 onClick={() => {
-                  if (selectedFamily.id === 'jobnet') {
+                  if (selectedFamily.downloadSourceUrl) {
+                    window.open(selectedFamily.downloadSourceUrl, '_blank');
+                  } else if (selectedFamily.id === 'jobnet') {
                     downloadZipFile(
                       '/download/Free/Job Net.COM.MM ( User Account ).zip',
                       'Job Net.COM.MM (User Account).zip'
