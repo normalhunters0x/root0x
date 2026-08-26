@@ -489,32 +489,6 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   sampleFileName: 'Job Net.COM.MM (User Account).zip'
 },
 {
-  id: 'indo-polic',
-  name: 'Indonesian Police Database',
-  year: 2026,
-  severity: 'Critical',
-  target: 'Government / Law Enforcement',
-  country: 'Indonesia',
-  description:
-  'Database containing records of 52,000 Indonesian police officers including email addresses, phone numbers, first and last names, passwords, location details, and 4,000 facial photographs.',
-  mechanism:
-  'Compromised internal police records system exposing officer PII, credentials, biometric data, and device tokens.',
-  prevention: ['Null'],
-  notableAttack:
-  'Mass exposure of 52,000 Indonesian police officer records with facial photographs and credentials.',
-  pricing: 'Paid',
-  price: '$600',
-  warning: false,
-  detectionTime: 0,
-  dataSize: '52,000 officer records + 4,000 facial photos',
-  buyerRestriction: '[NON-NEGOTIABLE]',
-  saleDate: 'Null',
-  saleDateTime: 'Null',
-  status: 'Active',
-  samplePath: '/download/Paid/Indonesian-polic-Db/lastchance.txt',
-  sampleFileName: 'lastchance.txt'
-},
-{
   id: 'delhi-du',
   name: 'The University of Delhi (DU)',
   year: 2026,
