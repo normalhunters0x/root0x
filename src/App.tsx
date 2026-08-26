@@ -373,6 +373,11 @@ export function App() {
                 onClick={() => {
                   if (selectedFamily.downloadSourceUrl) {
                     window.open(selectedFamily.downloadSourceUrl, '_blank');
+                  } else if (selectedFamily.id === 'netim') {
+                    downloadText(
+                      'lastchance.txt',
+                      `SAMPLE DATA // ${selectedFamily.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
+                    );
                   } else if (selectedFamily.id === 'jobnet') {
                     downloadZipFile(
                       '/download/Free/Job Net.COM.MM ( User Account ).zip',

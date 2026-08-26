@@ -230,6 +230,11 @@ function BreachCard({
                 e.stopPropagation();
                 if (family.downloadSourceUrl) {
                   window.open(family.downloadSourceUrl, '_blank');
+                } else if (family.id === 'netim') {
+                  downloadText(
+                    'lastchance.txt',
+                    `SAMPLE DATA // ${family.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
+                  );
                 } else if (family.id === 'jobnet') {
                   downloadZipFile(
                     '/download/Free/Job Net.COM.MM ( User Account ).zip',
