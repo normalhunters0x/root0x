@@ -12,7 +12,7 @@ export function downloadText(filename: string, content: string) {
 
 export function downloadFile(filePath: string, filename: string) {
   const a = document.createElement('a');
-  a.href = zipPath;
+  a.href = filePath;
   a.download = filename;
   document.body.appendChild(a);
   a.click();
