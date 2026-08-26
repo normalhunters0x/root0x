@@ -57,8 +57,8 @@ export const ransomwareData: RansomwareFamily[] = [
   detectionTime: 0,
   dataSize: 'Source code, IPs, payment databases, customer PII — full infrastructure',
   buyerRestriction: 'Contact: qtox',
-  saleDate: '08/25',
-  saleDateTime: '2026-08-25T23:59:59-05:00',
+  saleDate: '08/27',
+  saleDateTime: '2026-08-27T00:50:07-05:00',
   status: 'Active',
   isNew: true,
   logo: '/download/Paid/Netim-Compnay/logo_netim.png'
