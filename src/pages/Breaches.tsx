@@ -275,36 +275,6 @@ function BreachCard({
   );
 }
 
-function buildReport(family: RansomwareFamily) {
-  return [
-  '==================================================',
-  `  THREAT INTELLIGENCE REPORT // ${family.name}`,
-  '  Source: ThreatIntel Database — operated by root0x',
-  '==================================================',
-  '',
-  `Threat Name    : ${family.name}`,
-  `First Detected : ${family.year}`,
-  `Severity Level : ${family.severity}`,
-  `Pricing Model  : ${family.pricing}`,
-  `Warning Status : ${family.warning ? 'ACTIVE' : 'INACTIVE'}`,
-  `Target Sector  : ${family.target}`,
-  '',
-  '-- THREAT DESCRIPTION --',
-  family.description,
-  '',
-  '-- ATTACK VECTOR --',
-  family.mechanism,
-  '',
-  '-- NOTABLE INCIDENT --',
-  family.notableAttack,
-  '',
-  '-- COUNTERMEASURES --',
-  ...family.prevention.map((p) => ` - ${p}`),
-  '',
-  'INTELLIGENCE GATHERING PURPOSE ONLY. No malicious code included.',
-  ''].
-  join('\n');
-}
 
 export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFamily) => void }) {
   const [searchQuery, setSearchQuery] = useState('');

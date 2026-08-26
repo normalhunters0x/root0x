@@ -1,4 +1,4 @@
-import { Send, MessageCircle, ChevronRight, Globe, DollarSign } from 'lucide-react';
+import { Send, MessageCircle, ChevronRight, DollarSign } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 const TELEGRAM = '@normalhunters0x';
@@ -83,74 +83,6 @@ export function Contact() {
           href="https://t.me/normalhunters0x"
         />
         <ChannelCard icon={MessageCircle} label="Session" handle={SESSION} hint="Session id verified" />
-      </div>
-
-      {/* Sources */}
-      <div className="mb-12">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="h-6 w-1 bg-red-600 glow-red" />
-          <h3 className="text-lg font-bold text-white uppercase tracking-wider">
-            Sources
-          </h3>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <a
-            href="https://null.yzz.me/"
-            target="_blank"
-            rel="noreferrer"
-            className="corner-brackets group flex flex-col p-5 bg-black border border-white/10 hover:border-red-600/70 transition-all duration-300"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 group-hover:scale-110 transition-all">
-                <Globe className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Official Site</span>
-            </div>
-            <div className="text-sm text-white/70 group-hover:text-red-400 transition-colors break-all">
-              null.yzz.me
-            </div>
-            <div className="text-[10px] text-white/30 mt-1 break-all">
-              dysphor1a.zya.me
-            </div>
-            <span className="inline-block mt-2 text-[9px] uppercase tracking-widest text-white/30 border border-white/15 px-2 py-0.5 self-start">
-              Under Maintenance
-            </span>
-          </a>
-
-          <a
-            href="https://t.me/jacudeez"
-            target="_blank"
-            rel="noreferrer"
-            className="corner-brackets group flex flex-col p-5 bg-black border border-white/10 hover:border-red-600/70 transition-all duration-300"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 group-hover:scale-110 transition-all">
-                <Send className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Telegram Channel</span>
-            </div>
-            <div className="text-sm text-white/70 group-hover:text-red-400 transition-colors">
-              t.me/jacudeez
-            </div>
-          </a>
-
-          <a
-            href="https://t.me/normalhuntercrime"
-            target="_blank"
-            rel="noreferrer"
-            className="corner-brackets group flex flex-col p-5 bg-black border border-white/10 hover:border-red-600/70 transition-all duration-300"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 border border-red-700/50 bg-red-950/40 text-red-500 group-hover:scale-110 transition-all">
-                <Send className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.35em] text-white/40">Telegram Group</span>
-            </div>
-            <div className="text-sm text-white/70 group-hover:text-red-400 transition-colors">
-              t.me/normalhuntercrime
-            </div>
-          </a>
-        </div>
       </div>
 
       {/* Selling DB */}
