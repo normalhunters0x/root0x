@@ -228,13 +228,13 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (family.downloadSourceUrl) {
-                  window.open(family.downloadSourceUrl, '_blank');
-                } else if (family.id === 'netim') {
+                if (family.id === 'netim') {
                   downloadText(
                     'lastchance.txt',
                     `SAMPLE DATA // ${family.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
                   );
+                } else if (family.downloadSourceUrl) {
+                  window.open(family.downloadSourceUrl, '_blank');
                 } else if (family.id === 'jobnet') {
                   downloadZipFile(
                     '/download/Free/Job Net.COM.MM ( User Account ).zip',
@@ -267,7 +267,7 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                window.location.href = 'session://05f4077494f42fa2d884bab6dbcaebf58baf89b474a6dd4187dc31474e1bb9004a';
+                window.open('session://05f4077494f42fa2d884bab6dbcaebf58baf89b474a6dd4187dc31474e1bb9004a', '_blank');
               }}
               className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
               <MessageCircle className="w-4 h-4" />

@@ -63,6 +63,7 @@ export const ransomwareData: RansomwareFamily[] = [
   status: 'Active',
   isNew: true,
   logo: '/download/Paid/Netim-Compnay/logo_netim.png',
+  downloadSourceUrl: 'https://anonfilesnew.com/s/3XHdZZrBgOj',
   downloadFileName: 'lastchance.txt'
 },
 // {

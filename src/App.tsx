@@ -5,7 +5,8 @@ import {
   Send,
   X,
   Database,
-  AlertTriangle } from
+  AlertTriangle,
+  MessageCircle } from
 'lucide-react';
 import { RansomwareFamily } from './data/ransomware';
 import { useScreenInit } from './useScreenInit';
@@ -371,13 +372,13 @@ export function App() {
               <div className="flex flex-col sm:flex-row gap-3 justify-end p-6 border-t border-white/10 bg-white/[0.03]">
                 <button
                 onClick={() => {
-                  if (selectedFamily.downloadSourceUrl) {
-                    window.open(selectedFamily.downloadSourceUrl, '_blank');
-                  } else if (selectedFamily.id === 'netim') {
+                  if (selectedFamily.id === 'netim') {
                     downloadText(
                       'lastchance.txt',
                       `SAMPLE DATA // ${selectedFamily.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
                     );
+                  } else if (selectedFamily.downloadSourceUrl) {
+                    window.open(selectedFamily.downloadSourceUrl, '_blank');
                   } else if (selectedFamily.id === 'jobnet') {
                     downloadZipFile(
                       '/download/Free/Job Net.COM.MM ( User Account ).zip',
@@ -398,6 +399,12 @@ export function App() {
                 className="clip-corner flex items-center justify-center gap-2 px-5 py-2.5 border border-red-600/70 text-red-400 hover:bg-red-950/40 text-sm uppercase tracking-wider transition-colors">
                   <Download className="w-4 h-4" />
                   Download Sample
+                </button>
+                <button
+                onClick={() => window.open('session://05f4077494f42fa2d884bab6dbcaebf58baf89b474a6dd4187dc31474e1bb9004a', '_blank')}
+                className="clip-corner flex items-center justify-center gap-2 px-5 py-2.5 bg-white hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                  Contact Us On Session
                 </button>
                 <button
                 onClick={() => setSelectedFamily(null)}
