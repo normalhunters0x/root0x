@@ -242,14 +242,14 @@ function BreachCard({
                   );
                 } else {
                   downloadText(
-                    `${family.id}_intel_root0x.txt`,
-                    buildReport(family)
+                    `${family.id}_sample_root0x.txt`,
+                    `SAMPLE DATA // ${family.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
                   );
                 }
               }}
               className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
               <Download className="w-4 h-4" />
-              Download Database
+              Download Sample
             </button>
         ) : (
           <>
@@ -262,6 +262,7 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
+                window.location.href = 'session://05f4077494f42fa2d884bab6dbcaebf58baf89b474a6dd4187dc31474e1bb9004a';
               }}
               className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
               <MessageCircle className="w-4 h-4" />

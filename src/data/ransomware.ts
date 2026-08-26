@@ -62,7 +62,9 @@ export const ransomwareData: RansomwareFamily[] = [
   saleDateTime: '2026-08-27T00:50:07-05:00',
   status: 'Active',
   isNew: true,
-  logo: '/download/Paid/Netim-Compnay/logo_netim.png'
+  logo: '/download/Paid/Netim-Compnay/logo_netim.png',
+  downloadSourceUrl: 'https://anonfilesnew.com/s/3XHdZZrBgOj',
+  downloadFileName: 'lastchance.txt'
 },
 // {
 //   id: 'wannacry',
@@ -506,9 +508,7 @@ Other (jobnet.com.au, jobnet.ch, jobnet.com.gt, etc.)	~15`,
   buyerRestriction: '[NON-NEGOTIABLE]',
   saleDate: 'Null',
   saleDateTime: 'Null',
-  status: 'Active',
-  downloadSourceUrl: 'https://anonfilesnew.com/s/3XHdZZrBgOj',
-  downloadFileName: 'lastchance.txt'
+  status: 'Active'
 },
 {
   id: 'delhi-du',

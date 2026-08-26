@@ -417,14 +417,14 @@ export function App() {
                     );
                   } else {
                     downloadText(
-                      `${selectedFamily.id}_intel_root0x.txt`,
-                      buildReport(selectedFamily)
+                      `${selectedFamily.id}_sample_root0x.txt`,
+                      `SAMPLE DATA // ${selectedFamily.name}\n\nThis is a sample file for testing purposes only.\nContact on Session for full data access.`
                     );
                   }
                 }}
                 className="clip-corner flex items-center justify-center gap-2 px-5 py-2.5 border border-red-600/70 text-red-400 hover:bg-red-950/40 text-sm uppercase tracking-wider transition-colors">
                   <Download className="w-4 h-4" />
-                  Download Report
+                  Download Sample
                 </button>
                 <button
                 onClick={() => setSelectedFamily(null)}
