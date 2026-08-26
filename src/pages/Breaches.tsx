@@ -200,6 +200,13 @@ function BreachCard({
         </p>
 
         {family.warning && showTimer && <AuctionTimer saleDateTime={family.saleDateTime} />}
+        {family.warnContent && (
+          <div className="border border-red-600/60 bg-red-950/30 px-3 py-2 mb-5">
+            <p className="text-[10px] text-red-400 uppercase tracking-[0.15em] font-bold whitespace-pre-line leading-relaxed">
+              {family.warnContent}
+            </p>
+          </div>
+        )}
         {warningActive && (
           <div className="flex items-center gap-2 border border-red-600/60 bg-red-950/30 px-3 py-2 mb-5">
             <AlertTriangle className="w-3.5 h-3.5 text-red-500 shrink-0" />

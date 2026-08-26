@@ -302,6 +302,20 @@ export function App() {
                   </p>
                 </section>
 
+                {selectedFamily.warnContent && (
+                  <section>
+                    <h3 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.3em] text-red-500 mb-3">
+                      <span className="inline-block w-1.5 h-3.5 bg-red-600" />
+                      Warning
+                    </h3>
+                    <div className="border border-red-600/60 bg-red-950/30 p-4">
+                      <p className="text-sm text-red-400 font-bold whitespace-pre-line leading-relaxed">
+                        {selectedFamily.warnContent}
+                      </p>
+                    </div>
+                  </section>
+                )}
+
                 <section>
                   <h3 className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.3em] text-red-500 mb-3">
                     <span className="inline-block w-1.5 h-3.5 bg-red-600" />

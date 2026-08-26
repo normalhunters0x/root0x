@@ -25,6 +25,7 @@ export interface RansomwareFamily {
   logo?: string;
   downloadSourceUrl?: string;
   downloadFileName?: string;
+  warnContent?: string;
 }
 
 export const ransomwareData: RansomwareFamily[] = [
@@ -43,7 +44,8 @@ export const ransomwareData: RansomwareFamily[] = [
   notableAttack:
   'Full records include much more, since this is not all. It is not just payment data — we also have source code, IPs, and other related data, and much more.',
   pricing: 'Paid',
-  price: '$85,000',
+  price: '$115,000',
+  warnContent: 'BE WARN!\nINCOMING BANWAVE FOR THE ENTIRE TEAM!\n\nSOME RETARDED NIGGA IS TRYING TO BAN US',
   exampleCompromised: `Complete infrastructure compromise exposing source code, internal IPs, server configurations, payment processing records (PayPal, Stripe, CB), customer PII, and billing metadata.
 
 ('14783','VIR','7','ANN','2008-04-12 10:46:00','','14.23','EUR'),
