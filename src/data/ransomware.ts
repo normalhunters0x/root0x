@@ -45,7 +45,7 @@ export const ransomwareData: RansomwareFamily[] = [
   notableAttack:
   'Full records include much more, since this is not all. It is not just payment data — we also have source code, IPs, and other related data, and much more.',
   pricing: 'Paid',
-  price: '$115,000',
+  price: '$800 – $25,000',
   exampleCompromised: `Complete infrastructure compromise exposing source code, internal IPs, server configurations, payment processing records (PayPal, Stripe, CB), customer PII, and billing metadata.
 
 ('14783','VIR','7','ANN','2008-04-12 10:46:00','','14.23','EUR'),
@@ -58,7 +58,7 @@ export const ransomwareData: RansomwareFamily[] = [
   warning: true,
   detectionTime: 0,
   dataSize: 'Source code, IPs, payment databases, customer PII — full infrastructure',
-  buyerRestriction: 'Contact: qtox',
+  buyerRestriction: 'XMR / ETH ONLY',
   saleDate: '08/27',
   saleDateTime: '2026-08-27T00:50:07-05:00',
   status: 'Active',
