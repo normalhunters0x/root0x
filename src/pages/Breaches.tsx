@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Search,
   Download,
@@ -6,49 +6,10 @@ import {
   Database,
   AlertCircle,
   AlertTriangle,
-  Timer,
   Shield,
 } from 'lucide-react';
 import { ransomwareData, RansomwareFamily } from '../data/ransomware';
 import { downloadText, downloadFile } from '../utils/download';
-
-function formatCountdown(saleDateTime: string): { days: number; hours: number; seconds: number } {
-  try {
-    const saleDate = new Date(saleDateTime);
-    const now = new Date();
-    const diff = saleDate.getTime() - now.getTime();
-
-    if (diff <= 0) {
-      return { days: 0, hours: 0, seconds: 0 };
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    return { days, hours, seconds };
-  } catch (error) {
-    return { days: 0, hours: 0, seconds: 0 };
-  }
-}
-
-function useCountdown(saleDateTime: string) {
-  const [countdown, setCountdown] = useState(() => formatCountdown(saleDateTime));
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown(formatCountdown(saleDateTime));
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [saleDateTime]);
-
-  return countdown;
-}
-
-function isValidSaleDate(saleDateTime: string) {
-  if (!saleDateTime || saleDateTime === 'Null') return false;
-  return !Number.isNaN(new Date(saleDateTime).getTime());
-}
 
 function StatusBadge({ family }: { family: RansomwareFamily }) {
   if (family.status === 'Soon') {
@@ -60,28 +21,14 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
   }
   if (family.pricing === 'Free') {
     return (
-      <span className="inline-flex items-center gap-1.5">
-        <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
-          Leaked
-        </span>
-        {family.isNew && (
-          <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
-            New
-          </span>
-        )}
+      <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
+        Leaked
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1.5">
-      <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
-        For Sale
-      </span>
-      {family.isNew && (
-        <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
-          New
-        </span>
-      )}
+    <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
+      For Sale
     </span>
   );
 }
@@ -97,37 +44,6 @@ function Chip({ label, value }: { label: string; value: string }) {
   );
 }
 
-function AuctionTimer({ saleDateTime }: { saleDateTime: string }) {
-  const { days, hours, seconds } = useCountdown(saleDateTime);
-  const cells = [
-    { label: 'Days', value: days },
-    { label: 'Hours', value: hours },
-    { label: 'Secs', value: seconds },
-  ];
-  return (
-    <div className="border border-red-900/60 bg-red-950/10 p-4 mb-5">
-      <div className="flex items-center gap-2 mb-3">
-        <Timer className="w-3.5 h-3.5 text-red-500" />
-        <p className="text-[9px] font-bold text-red-500 tracking-[0.35em] uppercase">
-          Auction timer // USA timezone
-        </p>
-      </div>
-      <div className="grid grid-cols-3 gap-2">
-        {cells.map((cell) => (
-          <div key={cell.label} className="bg-black border border-white/10 py-2.5 text-center">
-            <div className="text-xl font-bold text-red-500 glow-text">
-              {String(cell.value).padStart(2, '0')}
-            </div>
-            <div className="text-[8px] text-white/40 uppercase tracking-[0.25em] mt-1">
-              {cell.label}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function BreachCard({
   family,
   onCardClick,
@@ -137,7 +53,6 @@ function BreachCard({
   onCardClick: (family: RansomwareFamily) => void;
   filterType: string;
 }) {
-  const showTimer = isValidSaleDate(family.saleDateTime);
   const warningActive = filterType === 'Warning' && family.warning;
 
   return (
@@ -207,7 +122,6 @@ function BreachCard({
           {family.description}
         </p>
 
-        {family.warning && showTimer && <AuctionTimer saleDateTime={family.saleDateTime} />}
         {family.warnContent && (
           <div className="border border-red-600/60 bg-red-950/30 px-3 py-2 mb-5">
             <p className="text-[10px] text-red-400 uppercase tracking-[0.15em] font-bold whitespace-pre-line leading-relaxed">
@@ -252,7 +166,7 @@ function BreachCard({
         ) : (
           <>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[9px] text-white/40 uppercase tracking-[0.3em]">Starting bid</span>
+              <span className="text-[9px] text-white/40 uppercase tracking-[0.3em]">For Sale</span>
               <span className="text-lg font-bold text-red-500 glow-text">
                 {family.price || '$$$'}
               </span>
@@ -302,11 +216,9 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
       return [...filtered].sort((a, b) => {
         const aForSale = a.pricing === 'Paid' && a.status === 'Active';
         const bForSale = b.pricing === 'Paid' && b.status === 'Active';
-        const aIsNew = a.isNew === true;
-        const bIsNew = b.isNew === true;
 
-        const aPriority = aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3;
-        const bPriority = bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3;
+        const aPriority = aForSale ? 0 : 1;
+        const bPriority = bForSale ? 0 : 1;
 
         return aPriority - bPriority;
       });

@@ -21,7 +21,6 @@ export interface RansomwareFamily {
   saleDate: string;
   saleDateTime: string;
   status: 'Active' | 'Soon';
-  isNew?: boolean;
   logo?: string;
   samplePath?: string;
   sampleFileName?: string;
@@ -62,7 +61,6 @@ export const ransomwareData: RansomwareFamily[] = [
   saleDate: '08/27',
   saleDateTime: '2026-08-27T00:50:07-05:00',
   status: 'Active',
-  isNew: true,
   logo: '/download/Paid/Netim-Compnay/logo_netim.png',
   samplePath: '/download/Paid/Netim-Compnay/lastchance.txt',
   sampleFileName: 'lastchance.txt',
