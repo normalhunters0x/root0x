@@ -674,5 +674,6 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active',
-  isNew: true
+  isNew: true,
+  logo: '/download/Paid/MBT.COM.MM/mbt.com.mm.logo.png'
 }];
