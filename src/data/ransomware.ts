@@ -662,11 +662,10 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
 225418,U Soe Lwin,09941258904,2026-09-04T08:30:57.000000Z,Normal,101282,,12345678,
 225417,Aung Kyaw Htun,09402695665,2026-09-04T08:28:35.000000Z,Normal,151460,,ak025846`,
   imageLinks: [
-    '/download/Paid/MBT.COM.MM/Db.jpg',
-    '/download/Paid/MBT.COM.MM/Example-User.jpg',
-    '/download/Paid/MBT.COM.MM/Example-User-1.jpg',
-    '/download/Paid/MBT.COM.MM/exp-admin.jpg',
-    '/download/Paid/MBT.COM.MM/SourceFileDir.jpg'
+    '/download/Paid/MBT.COM.MM/source-code-example.jpg',
+    '/download/Paid/MBT.COM.MM/user-account-sample.jpg',
+    '/download/Paid/MBT.COM.MM/admin-access.jpg',
+    '/download/Paid/MBT.COM.MM/source-code-dir-exp.jpg'
   ],
   warning: false,
   detectionTime: 0,
@@ -675,6 +674,5 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   saleDate: 'Null',
   saleDateTime: 'Null',
   status: 'Active',
-  isNew: true,
-  logo: '/download/Paid/MBT.COM.MM/mbt.com.mm.logo.png'
+  isNew: true
 }];
