@@ -21,14 +21,28 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
   }
   if (family.pricing === 'Free') {
     return (
-      <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
-        Leaked
+      <span className="inline-flex items-center gap-1.5">
+        <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
+          Leaked
+        </span>
+        {family.isNew && (
+          <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
+            New
+          </span>
+        )}
       </span>
     );
   }
   return (
-    <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
-      For Sale
+    <span className="inline-flex items-center gap-1.5">
+      <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
+        For Sale
+      </span>
+      {family.isNew && (
+        <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
+          New
+        </span>
+      )}
     </span>
   );
 }
@@ -216,9 +230,11 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
       return [...filtered].sort((a, b) => {
         const aForSale = a.pricing === 'Paid' && a.status === 'Active';
         const bForSale = b.pricing === 'Paid' && b.status === 'Active';
+        const aIsNew = a.isNew === true;
+        const bIsNew = b.isNew === true;
 
-        const aPriority = aForSale ? 0 : 1;
-        const bPriority = bForSale ? 0 : 1;
+        const aPriority = aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3;
+        const bPriority = bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3;
 
         return aPriority - bPriority;
       });

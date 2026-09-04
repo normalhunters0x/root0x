@@ -21,6 +21,7 @@ export interface RansomwareFamily {
   saleDate: string;
   saleDateTime: string;
   status: 'Active' | 'Soon';
+  isNew?: boolean;
   logo?: string;
   samplePath?: string;
   sampleFileName?: string;
@@ -631,4 +632,49 @@ ID 2: Ms. Km preeti Mishra | Dept: Hindi | PH.D. HINDI | Mobile: 9319473347`,
   logo: '/download/Free/yoma-fleet/yomafleet-logo.webp',
   samplePath: '/download/Free/yoma-fleet/Data-Minimum-DYSPHOR1A.zip',
   sampleFileName: 'Data-Minimum-DYSPHOR1A.zip'
+},
+{
+  id: 'mbt-telecom',
+  name: 'MBT Telecom',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Telecommunications / ISP',
+  country: '\u{1F1F2}\u{1F1F2} Myanmar',
+  description:
+  'Myanmar Broadband Telecom Co., Ltd. (MBT) is a leading fiber internet service provider and telecommunications network solutions company established in Myanmar in 2013. Full database compromise exposing 209,970 user records including PII, passwords, and device information.',
+  mechanism:
+  'Compromised MBT customer database exposing user PII, passwords, device types, and account metadata from their FTTH, DIA, and enterprise VPN services.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full user dump of 209,970 MBT Telecom customer records including names, phone numbers, passwords, and device information.',
+  pricing: 'Paid',
+  price: '$700',
+  exampleCompromised: `Full DB Access — 209,970 User Records
+
+id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
+225425,Phyo Wai Hein,09975578724,2026-09-04T09:03:45.000000Z,Normal,937064,,25809672,
+225424,Ma Zar Zar,09776411439,2026-09-04T08:54:23.000000Z,Normal,386819,,444555,
+225423,Arr Li,09973900796,2026-09-04T08:48:46.000000Z,Normal,4973,,mml19894,
+225422,umyintthein,0943051152,2026-09-04T08:37:52.000000Z,Normal,856710,,123456,
+225421,Ma Ei Thandarbo,09773450715,2026-09-04T08:33:53.000000Z,Normal,582959,,064071,
+225420,Daw Aye Kyi Kyi Myint,09952295522,2026-09-04T08:32:43.000000Z,Normal,771678,,123456,
+225419,Nan Phawy,09772111156,2026-09-04T08:31:36.000000Z,Normal,352373,,123456,
+225418,U Soe Lwin,09941258904,2026-09-04T08:30:57.000000Z,Normal,101282,,12345678,
+225417,Aung Kyaw Htun,09402695665,2026-09-04T08:28:35.000000Z,Normal,151460,,ak025846`,
+  imageLinks: [
+    '/download/Paid/MBT.COM.MM/Db.jpg',
+    '/download/Paid/MBT.COM.MM/Example-User.jpg',
+    '/download/Paid/MBT.COM.MM/Example-User-1.jpg',
+    '/download/Paid/MBT.COM.MM/exp-admin.jpg',
+    '/download/Paid/MBT.COM.MM/SourceFileDir.jpg'
+  ],
+  warning: false,
+  detectionTime: 0,
+  dataSize: '209,970 user records — full dump',
+  buyerRestriction: 'XMR / ETH ONLY',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active',
+  isNew: true,
+  logo: '/download/Paid/MBT.COM.MM/mbt.com.mm.logo.png'
 }];
