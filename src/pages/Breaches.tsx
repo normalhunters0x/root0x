@@ -268,13 +268,15 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
 
     if (filterType === 'All') {
       return [...filtered].sort((a, b) => {
+        const aPinned = a.id === 'citizenspay' ? -1 : 0;
+        const bPinned = b.id === 'citizenspay' ? -1 : 0;
         const aForSale = a.pricing === 'Paid' && a.status === 'Active';
         const bForSale = b.pricing === 'Paid' && b.status === 'Active';
         const aIsNew = a.isNew === true;
         const bIsNew = b.isNew === true;
 
-        const aPriority = aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3;
-        const bPriority = bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3;
+        const aPriority = aPinned + (aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3);
+        const bPriority = bPinned + (bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3);
 
         return aPriority - bPriority;
       });
