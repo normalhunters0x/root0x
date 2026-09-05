@@ -718,7 +718,7 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   saleDateTime: 'Null',
   status: 'Soon',
   isNew: true,
-  topBadge: 'CITIZENSPAY',
-  countdownEnd: '2026-09-08T00:00:00-05:00',
+  topBadge: 'RANSOMWARE',
+  countdownEnd: '2026-09-08T16:13:00-04:00',
   logo: '/download/Paid/CitizensPay/citizenpay-logo.jpeg'
 }];

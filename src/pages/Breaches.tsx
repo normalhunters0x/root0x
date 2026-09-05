@@ -11,11 +11,22 @@ import {
 import { ransomwareData, RansomwareFamily } from '../data/ransomware';
 import { downloadText, downloadFile } from '../utils/download';
 
+function NewBadge() {
+  return (
+    <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
+      New
+    </span>
+  );
+}
+
 function StatusBadge({ family }: { family: RansomwareFamily }) {
   if (family.status === 'Soon') {
     return (
-      <span className="inline-block px-2 py-1 border border-white/40 text-white text-[9px] font-bold uppercase tracking-widest animate-pulse">
-        Upcoming
+      <span className="inline-flex items-center gap-1.5">
+        <span className="inline-block px-2 py-1 border border-white/40 text-white text-[9px] font-bold uppercase tracking-widest animate-pulse">
+          Upcoming
+        </span>
+        {family.isNew && <NewBadge />}
       </span>
     );
   }
@@ -25,11 +36,7 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
         <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
           Leaked
         </span>
-        {family.isNew && (
-          <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
-            New
-          </span>
-        )}
+        {family.isNew && <NewBadge />}
       </span>
     );
   }
@@ -38,11 +45,7 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
       <span className="clip-corner inline-block px-2.5 py-1 border border-red-600 text-red-500 text-[9px] font-bold uppercase tracking-widest">
         For Sale
       </span>
-      {family.isNew && (
-        <span className="clip-corner inline-block px-2.5 py-1 bg-green-500 text-black text-[9px] font-bold uppercase tracking-widest">
-          New
-        </span>
-      )}
+      {family.isNew && <NewBadge />}
     </span>
   );
 }
@@ -68,7 +71,7 @@ function Chip({ label, value }: { label: string; value: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-white/15 bg-white/[0.03]">
       <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-red-500">{label}</span>
-      <span className="text-[10px] text-white/70 uppercase tracking-wider truncate max-w-[180px]">
+      <span className="text-[10px] text-white/70 uppercase tracking-wider truncate max-w-[220px]">
         {value}
       </span>
     </span>
@@ -142,6 +145,7 @@ function BreachCard({
           <Chip label="Sector" value={family.target} />
           <Chip label="Country" value={family.country} />
           <Chip label="Records" value={family.dataSize} />
+          {family.status === 'Soon' && family.price && <Chip label="Price" value={family.price} />}
           {family.countdownEnd && <CountdownChip targetIso={family.countdownEnd} />}
           {family.buyerRestriction && family.buyerRestriction !== 'Null' && (
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-red-900/70 bg-red-950/30">
@@ -192,11 +196,19 @@ function BreachCard({
 
       <div className="p-4 border-t border-white/10 bg-white/[0.03]">
         {family.status === 'Soon' ? (
-          <button
-            disabled
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
-            Transfer Pending
-          </button>
+          <>
+            <div className="flex items-center justify-between mb-3 gap-3">
+              <span className="text-[9px] text-white/40 uppercase tracking-[0.3em]">Upcoming</span>
+              <span className="text-lg font-bold text-red-500 glow-text text-right leading-tight">
+                {family.price || '$$$'}
+              </span>
+            </div>
+            <button
+              disabled
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
+              Transfer Pending
+            </button>
+          </>
         ) : family.pricing === 'Free' ? (
             <button
               onClick={(e) => {
@@ -263,23 +275,21 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
       return matchesSearch && matchesFilter;
     });
 
-    if (filterType === 'All') {
-      return [...filtered].sort((a, b) => {
-        const aPinned = a.id === 'citizenspay' ? -1 : 0;
-        const bPinned = b.id === 'citizenspay' ? -1 : 0;
-        const aForSale = a.pricing === 'Paid' && a.status === 'Active';
-        const bForSale = b.pricing === 'Paid' && b.status === 'Active';
-        const aIsNew = a.isNew === true;
-        const bIsNew = b.isNew === true;
+    return [...filtered].sort((a, b) => {
+      if (a.id === 'citizenspay') return -1;
+      if (b.id === 'citizenspay') return 1;
+      if (filterType !== 'All') return 0;
 
-        const aPriority = aPinned + (aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3);
-        const bPriority = bPinned + (bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3);
+      const aForSale = a.pricing === 'Paid' && a.status === 'Active';
+      const bForSale = b.pricing === 'Paid' && b.status === 'Active';
+      const aIsNew = a.isNew === true;
+      const bIsNew = b.isNew === true;
 
-        return aPriority - bPriority;
-      });
-    }
+      const aPriority = aForSale ? (aIsNew ? 0 : 1) : aIsNew ? 2 : 3;
+      const bPriority = bForSale ? (bIsNew ? 0 : 1) : bIsNew ? 2 : 3;
 
-    return filtered;
+      return aPriority - bPriority;
+    });
   }, [searchQuery, filterType]);
 
   const filterOptions = ['All', 'Free', 'Paid / Selling', 'Warning', 'Coming Soon'];

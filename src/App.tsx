@@ -221,6 +221,11 @@ export function App() {
                     
                       {detailStatus(selectedFamily).label}
                     </span>
+                    {selectedFamily.isNew && (
+                      <span className="clip-corner px-2 py-0.5 bg-green-500 text-black text-[10px] font-bold uppercase tracking-wider">
+                        New
+                      </span>
+                    )}
                     <span
                     className={`px-2 py-0.5 text-[10px] uppercase tracking-wider border ${selectedFamily.severity === 'Critical' ? 'border-red-600 text-red-500 bg-red-950/30' : 'border-white/40 text-white/60'}`}>
                     
