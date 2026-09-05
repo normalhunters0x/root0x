@@ -23,6 +23,8 @@ export interface RansomwareFamily {
   status: 'Active' | 'Soon';
   isNew?: boolean;
   logo?: string;
+  topBadge?: string;
+  countdownEnd?: string;
   samplePath?: string;
   sampleFileName?: string;
   downloadSourceUrl?: string;
@@ -692,7 +694,7 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   notableAttack:
   'Full agent user info dump from Citizens Pay (CTZPay) — 30 GB including KYC documents (NRC front/back), selfies, business license, shop pictures, and phone numbers.',
   pricing: 'Paid',
-  price: '$7,000 – $25,000',
+  price: '$7,000 – $25,000+',
   exampleCompromised: `Example Data Include
 
 - business_picture
@@ -716,5 +718,7 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   saleDateTime: 'Null',
   status: 'Soon',
   isNew: true,
+  topBadge: 'CITIZENSPAY',
+  countdownEnd: '2026-09-08T00:00:00-05:00',
   logo: '/download/Paid/CitizensPay/citizenpay-logo.jpeg'
 }];
