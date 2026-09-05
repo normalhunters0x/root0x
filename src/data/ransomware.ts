@@ -676,4 +676,45 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   status: 'Active',
   isNew: true,
   logo: '/download/Paid/MBT.COM.MM/mbt.com.mm.logo.png'
+},
+{
+  id: 'citizenspay',
+  name: 'CitizensPay',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Digital Wallet / Payment Platform',
+  country: '\u{1F1F2}\u{1F1F2} Myanmar',
+  description:
+  'Citizens Pay (also known as CTZPay) is a mobile digital wallet and payment platform in Myanmar powered by Myanmar Citizens Bank (MCB) and Capital Connect Limited. Compromised agent user information — total data size 30 GB. Price range $7,000 to $25,000. Victim domain https://ctzpay.com.',
+  mechanism:
+  'Exposed agent user info including business license, NRC pictures (front/back), selfie, shop pictures, and phone numbers from the CTZPay agent verification pipeline.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full agent user info dump from Citizens Pay (CTZPay) — 30 GB including KYC documents (NRC front/back), selfies, business license, shop pictures, and phone numbers.',
+  pricing: 'Paid',
+  price: '$7,000 – $25,000',
+  exampleCompromised: `Example Data Include
+
+- business_picture
+- nrc_picture_front
+- nrc_picture_back
+- selfie_picture
+- shop_picture
+- Ph Number`,
+  imageLinks: [
+    '/download/Paid/CitizensPay/business_license_picture.jpg',
+    '/download/Paid/CitizensPay/nrc_picture_front.jpg',
+    '/download/Paid/CitizensPay/nrc_picture_back.jpg',
+    '/download/Paid/CitizensPay/selfie_picture.jpg',
+    '/download/Paid/CitizensPay/shop_picture.jpg'
+  ],
+  warning: false,
+  detectionTime: 0,
+  dataSize: '30 GB',
+  buyerRestriction: 'Null',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Soon',
+  isNew: true,
+  logo: '/download/Paid/CitizensPay/citizenpay-logo.jpeg'
 }];
