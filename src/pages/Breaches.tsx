@@ -75,15 +75,15 @@ function Chip({ label, value }: { label: string; value: string }) {
   );
 }
 
-function CountdownBar({ targetIso }: { targetIso: string }) {
+function CountdownChip({ targetIso }: { targetIso: string }) {
   const { days, hours, minutes, seconds } = useCountdown(targetIso);
   return (
-    <div className="flex items-center justify-between mb-3">
-      <span className="text-[9px] text-white/40 uppercase tracking-[0.3em]">Countdown</span>
-      <span className="text-sm font-bold text-red-500 glow-text font-hack">
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-red-900/70 bg-red-950/30">
+      <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-red-500">Countdown</span>
+      <span className="text-[10px] text-red-400 font-hack uppercase tracking-wider">
         {days}d {hours}h {minutes}m {seconds}s
       </span>
-    </div>
+    </span>
   );
 }
 
@@ -105,19 +105,18 @@ function BreachCard({
       className="corner-brackets group relative flex flex-col bg-black border border-white/10 hover:border-red-600/80 transition-all duration-300 cursor-pointer">
       <div className={`h-1 w-full ${family.warning ? 'bg-red-600' : 'bg-white/10'}`} />
 
-      {family.topBadge && (
-        <div className="border-b border-red-600/40 bg-red-950/40 px-4 py-1.5 text-center">
-          <span className="clip-corner inline-block px-3 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-[0.3em]">
-            {family.topBadge}
-          </span>
-        </div>
-      )}
-
       <div className="flex items-center justify-between gap-2 px-4 py-2.5 bg-white/[0.04] border-b border-white/10">
         <span className="text-[9px] text-white/40 tracking-[0.3em] uppercase truncate">
           ID_{family.id.toUpperCase()}
         </span>
-        <StatusBadge family={family} />
+        <span className="flex items-center gap-1.5">
+          {family.topBadge && (
+            <span className="clip-corner inline-block px-2.5 py-1 bg-red-600 text-black text-[9px] font-bold uppercase tracking-widest">
+              {family.topBadge}
+            </span>
+          )}
+          <StatusBadge family={family} />
+        </span>
       </div>
 
       <div className="p-5 flex-1">
@@ -143,6 +142,7 @@ function BreachCard({
           <Chip label="Sector" value={family.target} />
           <Chip label="Country" value={family.country} />
           <Chip label="Records" value={family.dataSize} />
+          {family.countdownEnd && <CountdownChip targetIso={family.countdownEnd} />}
           {family.buyerRestriction && family.buyerRestriction !== 'Null' && (
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-red-900/70 bg-red-950/30">
               <Shield className="w-3 h-3 text-red-500" />
@@ -192,14 +192,11 @@ function BreachCard({
 
       <div className="p-4 border-t border-white/10 bg-white/[0.03]">
         {family.status === 'Soon' ? (
-          <>
-            {family.countdownEnd && <CountdownBar targetIso={family.countdownEnd} />}
-            <button
-              disabled
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
-              Transfer Pending
-            </button>
-          </>
+          <button
+            disabled
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/5 text-white/30 border border-white/10 font-bold text-sm uppercase tracking-wider cursor-not-allowed">
+            Transfer Pending
+          </button>
         ) : family.pricing === 'Free' ? (
             <button
               onClick={(e) => {
