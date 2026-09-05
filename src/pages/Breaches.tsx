@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   Search,
   Download,
@@ -50,23 +50,6 @@ function StatusBadge({ family }: { family: RansomwareFamily }) {
   );
 }
 
-function useCountdown(targetIso: string) {
-  const [now, setNow] = useState(() => Date.now());
-
-  useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  const target = new Date(targetIso).getTime();
-  const diff = Math.max(0, target - now);
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
-  return { days, hours, minutes: minutes.toString().padStart(2, '0'), seconds: seconds.toString().padStart(2, '0') };
-}
-
 function Chip({ label, value }: { label: string; value: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-white/15 bg-white/[0.03]">
@@ -75,42 +58,6 @@ function Chip({ label, value }: { label: string; value: string }) {
         {value}
       </span>
     </span>
-  );
-}
-
-function CountdownSection({ targetIso }: { targetIso: string }) {
-  const { days, hours, minutes, seconds } = useCountdown(targetIso);
-  return (
-    <div className="border border-red-600/50 bg-red-950/30 px-4 py-3 mb-5">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-red-500">
-          Countdown
-        </span>
-        <span className="inline-flex items-center gap-1 text-[9px] uppercase tracking-wider text-red-400">
-          <AlertTriangle className="w-3 h-3" />
-          HOLD // UNTIL RELEASE
-        </span>
-      </div>
-      <div className="flex items-center gap-3">
-        {[
-          { v: days, l: 'Days' },
-          { v: hours, l: 'Hours' },
-          { v: minutes, l: 'Minutes' },
-          { v: seconds, l: 'Seconds' },
-        ].map((u) => (
-          <div
-            key={u.l}
-            className="flex-1 border border-white/10 bg-black/60 px-3 py-2 text-center">
-            <div className="text-2xl font-bold text-red-500 glow-text font-hack leading-none">
-              {u.v}
-            </div>
-            <div className="text-[8px] uppercase tracking-[0.2em] text-white/40 mt-1.5">
-              {u.l}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -199,8 +146,6 @@ function BreachCard({
         <p className="text-xs text-white/50 leading-relaxed mb-5 line-clamp-3">
           {family.description}
         </p>
-
-        {family.countdownEnd && <CountdownSection targetIso={family.countdownEnd} />}
 
         {family.warnContent && (
           <div className="border border-red-600/60 bg-red-950/30 px-3 py-2 mb-5">
