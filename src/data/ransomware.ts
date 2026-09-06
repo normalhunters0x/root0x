@@ -719,4 +719,33 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   isNew: true,
   topBadge: 'RANSOMWARE',
   logo: '/download/Paid/CitizensPay/citizenpay-logo.jpeg'
+},
+{
+  id: 'rtad-gov-mm',
+  name: 'RTAD GOV MM',
+  year: 2026,
+  severity: 'Critical',
+  target: 'Government / Transport',
+  country: '\u{1F1F2}\u{1F1F2} Myanmar',
+  description:
+  'Road Transport Administration Department (RTAD) — official government portal providing public transport services, driving license issuance, vehicle registration, and safety regulations. Full databases dump total 1.08 GB. Victim domain https://rtad.gov.mm.',
+  mechanism:
+  'Compromised RTAD government databases exposing vehicle registration records, owner PII, NRC numbers, addresses, vehicle details, and insurance premium data via internal API responses.',
+  prevention: ['Null'],
+  notableAttack:
+  'Full databases dump — 1.08 GB from the Road Transport Administration Department (RTAD) of Myanmar, including owner names, NRC numbers, addresses, vehicle registration, branch, and premium payment records.',
+  pricing: 'Free',
+  price: '$0',
+  exampleCompromised: `{"code": 0, "status": "OK", "message": "Success", "data": {"owner_name": "U SOE MYINT", "nrc_no": "8/KHAMANA(N)073033", "address": ",,HTEIN SAN YWAR,CHAUK", "types": "T", "vehicle_no": "1A/1230", "book_no": "", "vehicle_name": "HINO TE11", "vehicle_type": "TRUCK_COMMERCIAL", "productType": "COMMERCIAL", "motorType": "TRUCK", "premiumYear": 2, "seating": 0, "weight": 7, "capacity": "7.0", "period_to": "2025-02-28", "premium_amount": "15000.0", "receipt_no": "", "receipt_date": "", "version": 1, "premiumTotalAmount": 30000, "total_month": 24, "rta_branch": "Regional Office(Magway)", "nextPremiumBuyDate": "2027-02-28", "isConvert": false, "penaltyFees": 0, "isDataValid": true}, "api_statuses": {"api_1": "false", "api_2": "success"}, "timestamp": "2026-01-24T18:19:18.162Z"}`,
+  warning: false,
+  detectionTime: 0,
+  dataSize: '1.08 GB — full databases dump',
+  buyerRestriction: 'Null',
+  saleDate: 'Null',
+  saleDateTime: 'Null',
+  status: 'Active',
+  isNew: true,
+  topBadge: 'RTAD GOV MM',
+  logo: '/download/Free/RTAD GOV MM/logo.png',
+  downloadSourceUrl: 'https://anonfilesnew.com/s/QOAJZ9uVSza'
 }];

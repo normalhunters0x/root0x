@@ -183,7 +183,9 @@ function BreachCard({
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                if (family.samplePath) {
+                if (family.downloadSourceUrl) {
+                  window.open(family.downloadSourceUrl, '_blank', 'noopener,noreferrer');
+                } else if (family.samplePath) {
                   downloadFile(family.samplePath, family.sampleFileName || 'sample.txt');
                 } else {
                   downloadText(
@@ -194,7 +196,7 @@ function BreachCard({
               }}
               className="clip-corner w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600 hover:bg-red-500 text-black font-bold text-sm uppercase tracking-wider transition-all duration-200">
               <Download className="w-4 h-4" />
-              Download Sample
+              {family.downloadSourceUrl ? 'Download Data' : 'Download Sample'}
             </button>
         ) : (
           <>
@@ -246,8 +248,8 @@ export function Breaches({ onCardClick }: { onCardClick: (family: RansomwareFami
     });
 
     return [...filtered].sort((a, b) => {
-      if (a.id === 'citizenspay') return -1;
-      if (b.id === 'citizenspay') return 1;
+      if (a.id === 'rtad-gov-mm' || a.id === 'citizenspay') return -1;
+      if (b.id === 'rtad-gov-mm' || b.id === 'citizenspay') return 1;
       if (filterType !== 'All') return 0;
 
       const aForSale = a.pricing === 'Paid' && a.status === 'Active';

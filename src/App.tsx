@@ -377,7 +377,9 @@ export function App() {
               <div className="flex flex-col sm:flex-row gap-3 justify-end p-6 border-t border-white/10 bg-white/[0.03]">
                 <button
                 onClick={() => {
-                  if (selectedFamily.samplePath) {
+                  if (selectedFamily.downloadSourceUrl) {
+                    window.open(selectedFamily.downloadSourceUrl, '_blank', 'noopener,noreferrer');
+                  } else if (selectedFamily.samplePath) {
                     downloadFile(selectedFamily.samplePath, selectedFamily.sampleFileName || 'sample.txt');
                   } else {
                     downloadText(
@@ -388,7 +390,7 @@ export function App() {
                 }}
                 className="clip-corner flex items-center justify-center gap-2 px-5 py-2.5 border border-red-600/70 text-red-400 hover:bg-red-950/40 text-sm uppercase tracking-wider transition-colors">
                   <Download className="w-4 h-4" />
-                  Download Sample
+                  {selectedFamily.downloadSourceUrl ? 'Download Data' : 'Download Sample'}
                 </button>
                 <button
                 onClick={() => window.open('session://05f4077494f42fa2d884bab6dbcaebf58baf89b474a6dd4187dc31474e1bb9004a', '_blank')}
