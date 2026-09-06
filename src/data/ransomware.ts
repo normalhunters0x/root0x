@@ -745,7 +745,6 @@ id,name,phone,created_at,user_status,uniq_id,address,new_pass,device_type
   saleDateTime: 'Null',
   status: 'Active',
   isNew: true,
-  topBadge: 'RTAD GOV MM',
-  logo: '/download/Free/RTAD GOV MM/logo.png',
+  logo: '/download/Free/RTAD GOV MM/rtad-logo.png',
   downloadSourceUrl: 'https://anonfilesnew.com/s/QOAJZ9uVSza'
 }];
